@@ -3,11 +3,11 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//[InitializeOnLoad]
+[InitializeOnLoad]
 public static class StartingSceneOnPlay
 {
-    static string oldScene;
-    const string FIRST_SCENE_NAME = "DontDestroyOnLoad";
+    private static string oldScene;
+    private const string FIRST_SCENE_NAME = "DontDestroyOnLoad";
 
     static StartingSceneOnPlay()
     {

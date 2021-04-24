@@ -5,9 +5,10 @@ public class IntroFadeIn : MonoBehaviour {
     public Animator NoFcksGivenText = null;
     public Animator TldrText = null;
     public Animator ContinueText = null;
+    public ContinueScript ContinueTextScript = null;
 
     public TypeWriterEffect typeWriterEffect = null;
-
+    
     public float delay = 0.1f;
     public string animationToPlay = "fade_in";
 
@@ -30,5 +31,6 @@ public class IntroFadeIn : MonoBehaviour {
         yield return new WaitForSeconds(3f);
 
         ContinueText.Play(animationToPlay);
+        ContinueTextScript.isDisplayed = true;
     }
 }

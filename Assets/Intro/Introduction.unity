@@ -242,6 +242,7 @@ MonoBehaviour:
   NoFcksGivenText: {fileID: 615181638}
   TldrText: {fileID: 138534687}
   ContinueText: {fileID: 1782925410}
+  ContinueTextScript: {fileID: 1782925413}
   typeWriterEffect: {fileID: 1435131589}
   delay: 0.1
   animationToPlay: fade_in
@@ -703,6 +704,7 @@ GameObject:
   - component: {fileID: 1782925412}
   - component: {fileID: 1782925411}
   - component: {fileID: 1782925410}
+  - component: {fileID: 1782925413}
   m_Layer: 5
   m_Name: PressToContinue
   m_TagString: Untagged
@@ -790,3 +792,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782925408}
   m_CullTransparentMesh: 1
+--- !u!114 &1782925413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782925408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d843de7c3577ce428d6986b19e73c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToChange: Level 1
+  isDisplayed: 0
