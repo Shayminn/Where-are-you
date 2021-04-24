@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float Speed = 1;
+    [SerializeField] PlayerInAir PlayerInAir = null;
     [SerializeField] Rigidbody2D rb2 = null;
     [SerializeField] Animator animator = null;
 
@@ -10,7 +11,6 @@ public class PlayerMovement : MonoBehaviour {
     readonly KeyCode Jump = KeyCode.W;
 
     float JumpPower = 4f;
-    public bool OnGround = false;
 
     enum Direction {
         Left,
@@ -18,30 +18,27 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
-        Debug.Log(Input.GetKey(MoveRight) + " " + Input.GetKey(MoveLeft));
-
+    void Update() {
         if (!Input.GetKey(MoveLeft) && !Input.GetKey(MoveRight) ||
             (Input.GetKey(MoveLeft) && Input.GetKey(MoveRight))) {
             SetAnimatorBools(false, false);
         }
         else {
             if (Input.GetKey(MoveLeft)) {
-                transform.Translate(-Vector3.right * Speed * Time.fixedDeltaTime);
+                transform.Translate(-Vector3.right * Speed * Time.deltaTime);
                 SetAnimatorBools(true, false);
             }
 
             if (Input.GetKey(MoveRight)) {
-                transform.Translate(Vector3.right * Speed * Time.fixedDeltaTime);
+                transform.Translate(Vector3.right * Speed * Time.deltaTime);
                 SetAnimatorBools(false, true);
             }
         }
 
-        if (OnGround) {
+        if (!PlayerInAir.InAir) {
             if (Input.GetKeyDown(Jump)) {
                 Debug.Log("JUMP");
-                rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);
-                OnGround = false;
+                rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);   
             }
         }  
     }
@@ -50,9 +47,4 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetBool(Direction.Left.ToString(), left);
         animator.SetBool(Direction.Right.ToString(), right);
     }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        OnGround = true;
-    }
-
 }
