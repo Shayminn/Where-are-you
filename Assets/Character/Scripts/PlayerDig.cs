@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerDig : MonoBehaviour {
-    [SerializeField] PlayerMovement PlayerMovement = null;
     [SerializeField] PlayerInAir PlayerInAir = null;
 
     public LayerMask LayerMask;
@@ -49,7 +48,7 @@ public class PlayerDig : MonoBehaviour {
                 if (Inventory > 0) {
                     Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);
                     cellPos.y -= 1;
-
+                    Debug.Log(transform.position.y);
                     SoftDirtMap.SetTile(cellPos, DigDirtTile);
 
                     Inventory--;
