@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Deadly")) {
+            Die();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Die() {
+
     }
 }

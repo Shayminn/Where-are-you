@@ -218,7 +218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
     m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
@@ -276,8 +276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 171}
-  m_SizeDelta: {x: 677.77, y: 72.08}
+  m_AnchoredPosition: {x: 0, y: 137}
+  m_SizeDelta: {x: 1017.62, y: 72.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842920601
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
     m_FontSize: 50
     m_FontStyle: 2
     m_BestFit: 0
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 953888157}
   - component: {fileID: 953888156}
   m_Layer: 5
-  m_Name: Titlte
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,8 +372,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 335}
-  m_SizeDelta: {x: 1303.57, y: 196.6}
+  m_AnchoredPosition: {x: 0, y: 347}
+  m_SizeDelta: {x: 1495.43, y: 225.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953888154
 MonoBehaviour:
@@ -396,7 +396,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
     m_FontSize: 169
     m_FontStyle: 1
     m_BestFit: 0
@@ -571,7 +571,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
     m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
@@ -840,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ce4f8f0f429704d8d1e6dae0348034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneToChange: Introduction
 --- !u!1 &1899848512
 GameObject:
   m_ObjectHideFlags: 0

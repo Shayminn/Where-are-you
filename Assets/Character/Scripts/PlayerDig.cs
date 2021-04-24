@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerDig : MonoBehaviour {
     [SerializeField] PlayerInAir PlayerInAir = null;
+    [SerializeField] Text InventoryText = null;
 
     public LayerMask LayerMask;
 
@@ -10,7 +12,7 @@ public class PlayerDig : MonoBehaviour {
     Tilemap SoftDirtMap;
     Tilemap HardDirtMap;
     Tile DigDirtTile;
-    public float Inventory = 0;
+    public int Inventory = 0;
 
     readonly KeyCode DigOrPlace = KeyCode.Space;
 
@@ -40,7 +42,7 @@ public class PlayerDig : MonoBehaviour {
 
                         map.SetTile(cellPos, null);
 
-                        Inventory += 1;
+                        InventoryChange(1);
                     }
                 }
             }
@@ -55,10 +57,15 @@ public class PlayerDig : MonoBehaviour {
                     TileBase tile = HardDirtMap.GetTile(cellPos);
                     if (tile == null) {
                         SoftDirtMap.SetTile(cellPos, DigDirtTile);
-                        Inventory--;
+                        InventoryChange(-1);
                     }
                 }
             }
         }
+    }
+
+    void InventoryChange(int change) {
+        Inventory += change;
+        InventoryText.text = Inventory.ToString();
     }
 }

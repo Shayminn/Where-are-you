@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Diggable
+  - Undiggable
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 4228876957
+    locked: 0
+  - name: UI
+    uniqueID: 3494981729
     locked: 0

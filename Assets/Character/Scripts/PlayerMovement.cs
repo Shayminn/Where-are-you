@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     readonly KeyCode MoveRight = KeyCode.D;
     readonly KeyCode Jump = KeyCode.W;
 
-    float JumpPower = 4f;
+    float JumpPower = 3.75f;
 
     enum Direction {
         Left,
