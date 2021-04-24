@@ -8,6 +8,7 @@ public class PlayerDig : MonoBehaviour {
 
     // For placing grounds
     Tilemap SoftDirtMap;
+    Tilemap HardDirtMap;
     Tile DigDirtTile;
     public float Inventory = 0;
 
@@ -15,6 +16,8 @@ public class PlayerDig : MonoBehaviour {
 
     void Start() {
         SoftDirtMap = GameObject.FindGameObjectWithTag("Diggable").GetComponent<Tilemap>();
+        HardDirtMap = GameObject.FindGameObjectWithTag("Undiggable").GetComponent<Tilemap>();
+
         DigDirtTile = Resources.Load<Tile>("DigDirt");
     }
 
@@ -48,10 +51,12 @@ public class PlayerDig : MonoBehaviour {
                 if (Inventory > 0) {
                     Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);
                     cellPos.y -= 1;
-                    Debug.Log(transform.position.y);
-                    SoftDirtMap.SetTile(cellPos, DigDirtTile);
 
-                    Inventory--;
+                    TileBase tile = HardDirtMap.GetTile(cellPos);
+                    if (tile == null) {
+                        SoftDirtMap.SetTile(cellPos, DigDirtTile);
+                        Inventory--;
+                    }
                 }
             }
         }
