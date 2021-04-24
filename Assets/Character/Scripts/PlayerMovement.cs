@@ -10,17 +10,31 @@ public class PlayerMovement : MonoBehaviour {
     readonly KeyCode Jump = KeyCode.W;
 
     float JumpPower = 4f;
-    bool OnGround = false;
+    public bool OnGround = false;
+
+    enum Direction {
+        Left,
+        Right
+    }
 
     // Update is called once per frame
     void FixedUpdate() {
-        if (Input.GetKey(MoveLeft)) {
-            transform.Translate(-Vector3.right * Speed * Time.fixedDeltaTime);
-            animator.SetBool("MoveLeft");
-        }
+        Debug.Log(Input.GetKey(MoveRight) + " " + Input.GetKey(MoveLeft));
 
-        if (Input.GetKey(MoveRight)) {
-            transform.Translate(Vector3.right * Speed * Time.fixedDeltaTime);
+        if (!Input.GetKey(MoveLeft) && !Input.GetKey(MoveRight) ||
+            (Input.GetKey(MoveLeft) && Input.GetKey(MoveRight))) {
+            SetAnimatorBools(false, false);
+        }
+        else {
+            if (Input.GetKey(MoveLeft)) {
+                transform.Translate(-Vector3.right * Speed * Time.fixedDeltaTime);
+                SetAnimatorBools(true, false);
+            }
+
+            if (Input.GetKey(MoveRight)) {
+                transform.Translate(Vector3.right * Speed * Time.fixedDeltaTime);
+                SetAnimatorBools(false, true);
+            }
         }
 
         if (OnGround) {
@@ -32,7 +46,13 @@ public class PlayerMovement : MonoBehaviour {
         }  
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    void SetAnimatorBools(bool left, bool right) {
+        animator.SetBool(Direction.Left.ToString(), left);
+        animator.SetBool(Direction.Right.ToString(), right);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
         OnGround = true;
     }
+
 }
