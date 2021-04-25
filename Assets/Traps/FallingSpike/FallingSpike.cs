@@ -34,7 +34,6 @@ public class FallingSpike : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision) {
         if (!Respawning && Falling) {
-
             Crackable.Crack();
             StartCoroutine(Respawn());
         }

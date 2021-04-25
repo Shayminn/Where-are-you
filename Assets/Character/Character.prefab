@@ -170,8 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   PlayerInAir: {fileID: 6258198965000227212}
-  rb2: {fileID: 6168129701281445127}
-  animator: {fileID: 6206777629509984784}
+  Rb2: {fileID: 6168129701281445127}
+  Animator: {fileID: 6206777629509984784}
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -226,5 +226,9 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 6022848671594547766}
   PlayerDig: {fileID: 3789592478952499944}
   PlayerMovement: {fileID: 8722317232774731704}
+  SoftDirtTile: {fileID: 0}
+  SoftDirtMap: {fileID: 0}
+  SoftDirtTilesPos: []
   SavePoint: {x: 0, y: 0, z: 0}
+  SavedInventory: 0
   ReviveDelay: 1

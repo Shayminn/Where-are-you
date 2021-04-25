@@ -4,8 +4,8 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float Speed = 1;
     [SerializeField] PlayerInAir PlayerInAir = null;
-    [SerializeField] Rigidbody2D rb2 = null;
-    [SerializeField] Animator animator = null;
+    [SerializeField] Rigidbody2D Rb2 = null;
+    [SerializeField] Animator Animator = null;
 
     public LayerMask LayerMask;
 
@@ -49,14 +49,14 @@ public class PlayerMovement : MonoBehaviour {
         if (!PlayerInAir.InAir) {
             if (Input.GetKeyDown(Jump)) {
                 Debug.Log("JUMP");
-                rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);   
+                Rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);   
             }
         }  
     }
 
     void SetAnimatorBools(bool left, bool right) {
-        animator.SetBool(Direction.Left.ToString(), left);
-        animator.SetBool(Direction.Right.ToString(), right);
+        Animator.SetBool(Direction.Left.ToString(), left);
+        Animator.SetBool(Direction.Right.ToString(), right);
     }
     
     bool RaycastHorizontal(Vector3 dir) {

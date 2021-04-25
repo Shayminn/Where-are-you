@@ -15,6 +15,7 @@ public class SceneChanger : MonoBehaviour
 
     string sceneName;
     static bool firstRun = true;
+    static bool changingScenes = false;
 
     private void Start()
     {
@@ -40,12 +41,16 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        this.sceneName = sceneName;
-        StartCoroutine(SceneChange());
+        if (!changingScenes) {
+            this.sceneName = sceneName;
+            StartCoroutine(SceneChange());
+        }
     }
 
     IEnumerator SceneChange()
     {
+        changingScenes = true;
+
         yield return new WaitForSeconds(changeDelay);
 
         animator.Play("fadeIn");
@@ -65,5 +70,7 @@ public class SceneChanger : MonoBehaviour
             }
             yield return null;
         }
+
+        changingScenes = false;
     }
 }
