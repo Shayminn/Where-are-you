@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bdb0b78340b11d42a22c617ab8aed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RollDirection: 0
   rb2: {fileID: 4505394194219043592}
+  RollDirection: 0
   Force: 5000
-  MoveOnStart: 0
+  MoveOnStart: 1

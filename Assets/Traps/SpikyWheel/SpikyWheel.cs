@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikyWheel : MonoBehaviour
+public class SpikyWheel : ResetOnDeath
 {
     [SerializeField] List<Vector3> TargetPositions = new List<Vector3>();
     [SerializeField] RotateAroundSelf RotateAroundSelf = null;
@@ -12,41 +12,60 @@ public class SpikyWheel : MonoBehaviour
     bool Reverse = false;
     int Index = 0;
 
+    Coroutine Move;
+
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
+
         TargetPositions.Insert(0, transform.position);
 
-        StartCoroutine(MoveTo());
+        StartTrap();
     }
 
     IEnumerator MoveTo() {
-        yield return new WaitForSeconds(DelayBeforeMoving);
+        while (true) {
 
-        if (Reverse) {
-            Index--;
+            yield return new WaitForSeconds(DelayBeforeMoving);
+
+            if (Reverse) {
+                Index--;
+            }
+            else {
+                Index++;
+            }
+
+            if (Index == TargetPositions.Count - 1) {
+                Reverse = true;
+                RotateAroundSelf.SetRotationDirection();
+            }
+            else if (Index == 0) {
+                Reverse = false;
+                RotateAroundSelf.SetRotationDirection();
+            }
+
+            Vector3 targetPos = TargetPositions[Index];
+            while (transform.position != targetPos) {
+
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, MoveSpeed * Time.deltaTime);
+
+                yield return null;
+            }
         }
-        else {
-            Index++;
-        }
+    }
 
-        if (Index == TargetPositions.Count - 1) {
-            Reverse = true;
-            RotateAroundSelf.SetRotationDirection();
-        }
-        else if (Index == 0) {
-            Reverse = false;
-            RotateAroundSelf.SetRotationDirection();
-        }
+    public override void StartTrap() {
+        Move = StartCoroutine(MoveTo());
+    }
 
-        Vector3 targetPos = TargetPositions[Index];
-        while (transform.position != targetPos) {
+    public override void ResetTrap() {
+        transform.position = StartingPosition;
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, MoveSpeed * Time.deltaTime);
+        Index = 0;
+        Reverse = false;
 
-            yield return null;
-        }
-
-        StartCoroutine(MoveTo());
+        StopCoroutine(Move);
+        StartTrap();
     }
 }

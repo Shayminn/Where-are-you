@@ -1,53 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RollingBall : MonoBehaviour
-{
-    [SerializeField] RollingDirection RollDirection = RollingDirection.Right;
+public class RollingBall : ResetOnDeath {
     [SerializeField] Rigidbody2D rb2 = null;
+    [SerializeField] RollingDirection RollDirection = RollingDirection.Right;
     [SerializeField] float Force = 25f;
     [SerializeField] bool MoveOnStart = false;
 
-    Vector3 StartingPosition;
-    int sign = 1;
+    bool Triggered = false;
+    int Sign = 1;
 
     enum RollingDirection {
         Right,
         Left
     }
 
-    void Start() {
-        StartingPosition = transform.position;
+    new void Start() {
+        base.Start();
 
         if (RollDirection == RollingDirection.Left) {
-            sign = -1;
+            Sign = -1;
         }
 
         if (MoveOnStart) {
-            StartBall();
+            StartTrap();
         }
     }
 
     void AddForce() {
-        rb2.AddForce(Vector3.right * sign * Force, ForceMode2D.Force);
+        rb2.AddForce(Vector3.right * Sign * Force, ForceMode2D.Force);
     }
 
-    public void StartBall() {
+    public override void StartTrap() {
         rb2.gravityScale = 1;
-
         AddForce();
     }
 
-    public void ResetBall() {
+    public override void ResetTrap() {
         transform.position = StartingPosition;
+        transform.rotation = Quaternion.identity;
 
-        StartBall();
+        rb2.velocity = Vector3.zero;
+        rb2.angularVelocity = 0;
+        rb2.gravityScale = 0;
+
+        if (MoveOnStart) {
+            StartTrap();
+        }
+        else {
+            Triggered = false;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        if (!MoveOnStart && collision.CompareTag("Player")) {
-            StartBall();
+        if (!MoveOnStart && !Triggered && collision.CompareTag("Player")) {
+            Triggered = true;
+            StartTrap();
         }
     }
 }

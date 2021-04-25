@@ -97,10 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102665bb9c464d44cad10dfd3122ef7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPositions:
-  - {x: 2, y: 1, z: 0}
-  - {x: -2, y: 1, z: 0}
-  - {x: -2, y: 2, z: 0}
+  rb2: {fileID: 0}
+  TargetPositions: []
   RotateAroundSelf: {fileID: 3344155583165413429}
   DelayBeforeMoving: 1
   MoveSpeed: 3
