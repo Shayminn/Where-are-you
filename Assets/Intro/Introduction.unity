@@ -305,7 +305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
+    m_Font: {fileID: 12800000, guid: 5bb1dc394c32bb641996bacc3472840d, type: 3}
     m_FontSize: 43
     m_FontStyle: 0
     m_BestFit: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Text: 'Here''s the TL;DR, a wizard can''t get a girlfriend the conventional way,
 
     so
-    he decided to go search for girls in a dungeon full of <i>TRAPS</i>.'
+    he decided to go search for girls in a dungeon full of TRAPS.'
 --- !u!222 &138534686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
+    m_Font: {fileID: 12800000, guid: 5bb1dc394c32bb641996bacc3472840d, type: 3}
     m_FontSize: 43
     m_FontStyle: 0
     m_BestFit: 0
@@ -655,9 +655,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
+    m_Font: {fileID: 12800000, guid: ff9c29e74b87e1f4788e5b5532b2e8ec, type: 3}
     m_FontSize: 43
-    m_FontStyle: 3
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 72
@@ -728,8 +728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 592.02, y: -476}
-  m_SizeDelta: {x: 591.25, y: 61.34}
+  m_AnchoredPosition: {x: 654.34064, y: -476}
+  m_SizeDelta: {x: 466.61, y: 61.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1782925410
 Animator:
@@ -771,7 +771,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7ca437b0cd422d479fb20698cf7decb, type: 3}
+    m_Font: {fileID: 12800000, guid: f34dd59b259d8734085d664532a0bd08, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
