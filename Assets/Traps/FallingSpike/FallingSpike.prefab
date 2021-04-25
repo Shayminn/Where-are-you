@@ -170,8 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e590ce770814c4791b06b1f4162bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2: {fileID: 7890115957777301643}
+  Rb2: {fileID: 7890115957777301643}
   SpriteRenderer: {fileID: 7890115957777301642}
+  PolygonCollider2D: {fileID: 7890115957777301640}
   Crackable: {fileID: 7890115957777301655}
   LayerMask:
     serializedVersion: 2

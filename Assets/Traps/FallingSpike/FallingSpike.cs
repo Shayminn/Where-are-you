@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FallingSpike : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb2 = null;
+    [SerializeField] Rigidbody2D Rb2 = null;
     [SerializeField] SpriteRenderer SpriteRenderer = null;
+    [SerializeField] PolygonCollider2D PolygonCollider2D = null;
     [SerializeField] Crackable Crackable = null;
 
     public LayerMask LayerMask;
@@ -25,7 +26,7 @@ public class FallingSpike : MonoBehaviour
 
             if (hit.collider != null) {
                 if (hit.collider.CompareTag("Player")) {
-                    rb2.gravityScale = 1;
+                    Rb2.gravityScale = 1;
                     Falling = true;
                 }
             }
@@ -33,6 +34,11 @@ public class FallingSpike : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Player")) {
+            Rb2.gravityScale = 1;
+            Falling = true;
+        }
+
         if (!Respawning && Falling) {
             Crackable.Crack();
             StartCoroutine(Respawn());
@@ -47,13 +53,12 @@ public class FallingSpike : MonoBehaviour
 
         SpriteRenderer.color = color;
 
-        rb2.gravityScale = 0;
-        rb2.velocity = Vector3.zero;
+        PolygonCollider2D.enabled = false;
+        Rb2.gravityScale = 0;
+        Rb2.velocity = Vector3.zero;
         transform.position = originalPos;
 
         yield return new WaitForSeconds(1f);
-
-        transform.position = originalPos;
 
         while (color.a < 1) {
             color.a += Time.deltaTime;
@@ -63,6 +68,7 @@ public class FallingSpike : MonoBehaviour
             yield return null;
         }
 
+        PolygonCollider2D.enabled = true;
         Falling = false;
         Respawning = false;
     }

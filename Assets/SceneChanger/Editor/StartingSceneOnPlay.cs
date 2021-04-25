@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[InitializeOnLoad]
+//[InitializeOnLoad]
 public static class StartingSceneOnPlay
 {
     private static string oldScene;

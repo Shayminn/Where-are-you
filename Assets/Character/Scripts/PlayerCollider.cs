@@ -11,7 +11,7 @@ public class PlayerCollider : MonoBehaviour
     [SerializeField] PlayerDig PlayerDig = null;
     [SerializeField] PlayerMovement PlayerMovement = null;
 
-    [SerializeField] Tile SoftDirtTile = null;
+    Tile SoftDirtTile = null;
     [SerializeField] Tilemap SoftDirtMap = null;
     public List<Vector3Int> SoftDirtTilesPos = new List<Vector3Int>();
 
