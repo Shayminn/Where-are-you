@@ -208,7 +208,8 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
-  distance: 0.3
+  Distance: 0.3
+  LeftRight: 0.075
   InAir: 0
 --- !u!114 &506710437506874760
 MonoBehaviour:
