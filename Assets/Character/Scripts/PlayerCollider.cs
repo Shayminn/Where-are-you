@@ -32,6 +32,8 @@ public class PlayerCollider : MonoBehaviour
     public void Revive() {
         ChangeSpriteRendererColorAlpha(1);
 
+        transform.position = SavePoint;
+
         PlayerDig.enabled = true;
         PlayerMovement.enabled = true;
     }
