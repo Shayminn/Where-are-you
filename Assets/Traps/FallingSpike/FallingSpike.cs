@@ -29,9 +29,11 @@ public class FallingSpike : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        Crackable.Crack();
+        if (!Respawning) {
 
-        StartCoroutine(Respawn());
+            Crackable.Crack();
+            StartCoroutine(Respawn());
+        }
     }
 
     public IEnumerator Respawn() {

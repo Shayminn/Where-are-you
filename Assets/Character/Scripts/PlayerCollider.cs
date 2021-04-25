@@ -13,8 +13,10 @@ public class PlayerCollider : MonoBehaviour
     public Vector3 SavePoint;
     public float ReviveDelay = 1f;
 
+    bool Dead = false;
+
     public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.CompareTag("Deadly")) {
+        if (!Dead && collision.collider.CompareTag("Deadly")) {
             Die();
         }
     }
@@ -22,6 +24,7 @@ public class PlayerCollider : MonoBehaviour
     public void Die() {
         Debug.Log("DEAD");
 
+        Dead = true;
         DeathCounter.Instance.Increment();
 
         ChangeSpriteRendererColorAlpha(0);
@@ -33,6 +36,8 @@ public class PlayerCollider : MonoBehaviour
     }
 
     public void Revive() {
+        Dead = false;
+
         ChangeSpriteRendererColorAlpha(1);
 
         transform.position = SavePoint;
