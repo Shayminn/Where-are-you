@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!95 &6206777629509984784
 Animator:
@@ -174,7 +174,7 @@ MonoBehaviour:
   animator: {fileID: 6206777629509984784}
   LayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &3789592478952499944
 MonoBehaviour:
   m_ObjectHideFlags: 0
