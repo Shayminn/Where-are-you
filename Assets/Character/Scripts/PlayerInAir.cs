@@ -26,25 +26,13 @@ public class PlayerInAir : MonoBehaviour
         Debug.DrawRay(currTrans, -Vector2.up, Color.red);
         RaycastHit2D hitRight = Physics2D.Raycast(currTrans, -Vector2.up, Distance, LayerMask);
 
-        //Debug.Log(hit.collider + " " + hitLeft.collider + " " + hitRight.collider);
-        if (
-            hit.collider != null ||
+        if (hit.collider != null ||
             hitLeft.collider != null ||
-            hitRight.collider != null
-            ) {
+            hitRight.collider != null) {
             InAir = false;
         }
         else {
             InAir = true;
         }
-
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, distance, LayerMask);
-
-        //if (hit.collider != null) {
-        //    InAir = false;
-        //}
-        //else {
-        //    InAir = true;
-        //}
     }
 }

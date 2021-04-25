@@ -24,8 +24,10 @@ public class FallingSpike : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, Mathf.Infinity, LayerMask);
 
             if (hit.collider != null) {
-                rb2.gravityScale = 1;
-                Falling = true;
+                if (hit.collider.CompareTag("Player")) {
+                    rb2.gravityScale = 1;
+                    Falling = true;
+                }
             }
         }
     }
@@ -47,9 +49,12 @@ public class FallingSpike : MonoBehaviour
         SpriteRenderer.color = color;
 
         rb2.gravityScale = 0;
+        rb2.velocity = Vector3.zero;
         transform.position = originalPos;
 
         yield return new WaitForSeconds(1f);
+
+        transform.position = originalPos;
 
         while (color.a < 1) {
             color.a += Time.deltaTime;
