@@ -16,6 +16,7 @@ public class PlayerDig : MonoBehaviour {
     public int Inventory = 0;
 
     readonly KeyCode DigOrPlace = KeyCode.LeftShift;
+    readonly KeyCode DigOrPlace2 = KeyCode.RightShift;
 
     void Start() {
         Transform smolGrid = GameObject.Find("SmolGrid").transform;
@@ -28,7 +29,7 @@ public class PlayerDig : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(DigOrPlace)) {
+        if (Input.GetKeyDown(DigOrPlace) || Input.GetKeyDown(DigOrPlace2)) {
             if (!PlayerInAir.InAir) {
                 // Dig ground
                 Debug.Log("Dig");
