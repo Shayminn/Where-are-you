@@ -34,7 +34,6 @@ public class PlayerCollider : MonoBehaviour
 
         PlayerDig.enabled = true;
         PlayerMovement.enabled = true;
-
     }
 
     void ChangeSpriteRendererColorAlpha(float alpha) {

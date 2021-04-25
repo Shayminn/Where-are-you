@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8722317232774731704}
   - component: {fileID: 3789592478952499944}
   - component: {fileID: 6258198965000227212}
+  - component: {fileID: 506710437506874760}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -66090339
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 6d067a21909211643b3bb98b714c7b41,
     type: 3}
@@ -171,6 +172,9 @@ MonoBehaviour:
   PlayerInAir: {fileID: 6258198965000227212}
   rb2: {fileID: 6168129701281445127}
   animator: {fileID: 6206777629509984784}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3789592478952499944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2bb3c3243aff14fad13d889d913e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMovement: {fileID: 8722317232774731704}
   PlayerInAir: {fileID: 6258198965000227212}
+  InventoryText: {fileID: 0}
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -206,3 +210,20 @@ MonoBehaviour:
     m_Bits: 8
   distance: 0.3
   InAir: 0
+--- !u!114 &506710437506874760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6258198965000227211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3d021607ce93543830cf792a2e1da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 6022848671594547766}
+  PlayerDig: {fileID: 3789592478952499944}
+  PlayerMovement: {fileID: 8722317232774731704}
+  SavePoint: {x: 0, y: 0, z: 0}
+  ReviveDelay: 1
