@@ -80,4 +80,9 @@ public class PlayerDig : MonoBehaviour {
         Inventory += change;
         InventoryText.text = Inventory.ToString();
     }
+
+    public void SetInventory(int inventory) {
+        Inventory = inventory;
+        InventoryText.text = Inventory.ToString();
+    }
 }

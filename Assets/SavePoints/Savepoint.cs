@@ -6,7 +6,7 @@ public class Savepoint : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            collision.GetComponent<PlayerCollider>().SavePoint = transform.position;
+            collision.GetComponent<PlayerCollider>().AssignSavePoint(transform.position);
 
             Destroy(gameObject);
         }
