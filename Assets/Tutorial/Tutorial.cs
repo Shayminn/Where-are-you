@@ -5,14 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
+
     [SerializeField] Text[] TutorialTexts = null;
+    public bool Last = false;
 
     public void StartTutorial(string tutorial) {
         Text tutorialText = TutorialTexts.FirstOrDefault(tut => tut.name.Equals(tutorial));
 
         tutorialText.gameObject.SetActive(true);
         StartCoroutine(CheckInput(tutorialText));
-        StartCoroutine(GlowEffect(tutorialText));
     }
 
     public void StartTutorial(string tutorial, KeyCode Keycode) {
@@ -20,7 +21,6 @@ public class Tutorial : MonoBehaviour {
 
         tutorialText.gameObject.SetActive(true);
         StartCoroutine(CheckInput(Keycode, tutorialText));
-        StartCoroutine(GlowEffect(tutorialText));
     }
 
     public void StartTutorial(string tutorial, List<KeyCode> Keycode) {
@@ -28,7 +28,6 @@ public class Tutorial : MonoBehaviour {
 
         tutorialText.gameObject.SetActive(true);
         StartCoroutine(CheckInput(Keycode, tutorialText));
-        StartCoroutine(GlowEffect(tutorialText));
     }
 
     /// <summary>
@@ -37,14 +36,17 @@ public class Tutorial : MonoBehaviour {
     /// <param name="text">Tutorial text</param>
     /// <returns></returns>
     IEnumerator CheckInput(Text text) {
-        int inventory = FindObjectOfType<PlayerDig>().Inventory;
-        int expectedInventory = inventory - 1;
+        PlayerDig playerDig = FindObjectOfType<PlayerDig>();
 
-        while (inventory != expectedInventory) {
+        int expectedInventory = playerDig.Inventory - 1;
+
+        while (playerDig.Inventory != expectedInventory) {
             yield return null;
         }
 
-        Destroy(text);
+        text.transform.parent.gameObject.SetActive(false);
+
+        CheckLast();
     }
 
     /// <summary>
@@ -59,7 +61,9 @@ public class Tutorial : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(text);
+        text.transform.parent.gameObject.SetActive(false);
+
+        CheckLast();
     }
 
     /// <summary>
@@ -83,31 +87,14 @@ public class Tutorial : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(text);
+        text.transform.parent.gameObject.SetActive(false);
+
+        CheckLast();
     }
 
-    IEnumerator GlowEffect(Text text) {
-        Color color = text.color;
-        color.a = 1;
-
-        // Fade out
-        while (text.color.a > 0.25f) {
-            color.a -= Time.deltaTime;
-            text.color = color;
-
-            yield return null;
+    void CheckLast() {
+        if (Last) {
+            Destroy(gameObject);
         }
-
-        color.a = 0.25f;
-
-        // Fade In
-        while (text.color.a < 1) {
-            color.a += Time.deltaTime;
-            text.color = color;
-
-            yield return null;
-        }
-
-        StartCoroutine(GlowEffect(text));
     }
 }
