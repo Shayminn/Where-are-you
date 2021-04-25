@@ -22,8 +22,16 @@ public class PlayerCollider : MonoBehaviour
 
     bool Dead = false;
 
+    readonly KeyCode Reset = KeyCode.R;
+
     void Start() {
         SoftDirtTile = Resources.Load<Tile>("DigDirt");    
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(Reset)) {
+            Die();
+        }    
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
