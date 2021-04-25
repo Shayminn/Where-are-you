@@ -11,14 +11,17 @@ public class PlayerDig : MonoBehaviour {
     // For placing grounds
     Tilemap SoftDirtMap;
     Tilemap HardDirtMap;
+    Tilemap TrapsMap;
     Tile DigDirtTile;
     public int Inventory = 0;
 
-    readonly KeyCode DigOrPlace = KeyCode.Space;
+    readonly KeyCode DigOrPlace = KeyCode.LeftShift;
 
     void Start() {
-        SoftDirtMap = GameObject.FindGameObjectWithTag("Diggable").GetComponent<Tilemap>();
-        HardDirtMap = GameObject.FindGameObjectWithTag("Undiggable").GetComponent<Tilemap>();
+        Transform smolGrid = GameObject.Find("SmolGrid").transform;
+        SoftDirtMap = smolGrid.Find("SoftDirt").GetComponent<Tilemap>();
+        HardDirtMap = smolGrid.Find("HardDirt").GetComponent<Tilemap>();
+        TrapsMap = smolGrid.Find("Traps").GetComponent<Tilemap>();
 
         DigDirtTile = Resources.Load<Tile>("DigDirt");
     }
@@ -54,8 +57,16 @@ public class PlayerDig : MonoBehaviour {
                     Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);
                     cellPos.y -= 1;
 
-                    TileBase tile = HardDirtMap.GetTile(cellPos);
-                    if (tile == null) {
+                    TileBase softTile = SoftDirtMap.GetTile(cellPos);
+                    TileBase hardTile = HardDirtMap.GetTile(cellPos);
+                    TileBase trapTile = TrapsMap.GetTile(cellPos);
+
+                    if (softTile == null && hardTile == null) {
+
+                        //if (trapTile != null) {
+                        //    TrapsMap.SetTile(cellPos, null);
+                        //}
+
                         SoftDirtMap.SetTile(cellPos, DigDirtTile);
                         InventoryChange(-1);
                     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Diggable
   - Undiggable
+  - Deadly
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2256758861
+    locked: 0
+  - name: Traps
+    uniqueID: 3931296583
     locked: 0
   - name: Ground
     uniqueID: 85429009

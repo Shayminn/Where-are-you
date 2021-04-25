@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float Speed = 1;
@@ -6,9 +7,11 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] Rigidbody2D rb2 = null;
     [SerializeField] Animator animator = null;
 
+    public LayerMask LayerMask;
+
     readonly KeyCode MoveLeft = KeyCode.A;
     readonly KeyCode MoveRight = KeyCode.D;
-    readonly KeyCode Jump = KeyCode.W;
+    readonly KeyCode Jump = KeyCode.Space;
 
     float JumpPower = 3.75f;
 
@@ -25,12 +28,20 @@ public class PlayerMovement : MonoBehaviour {
         }
         else {
             if (Input.GetKey(MoveLeft)) {
-                transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+                Vector3 move = -Vector3.right * Speed * Time.deltaTime;
+                if (!RaycastHorizontal(move)) {
+                    transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+                }
+
                 SetAnimatorBools(true, false);
             }
 
             if (Input.GetKey(MoveRight)) {
-                transform.Translate(Vector3.right * Speed * Time.deltaTime);
+                Vector3 move = Vector3.right * Speed * Time.deltaTime;
+                if (!RaycastHorizontal(move)) {
+                    transform.Translate(move);
+                }
+
                 SetAnimatorBools(false, true);
             }
         }
@@ -46,5 +57,14 @@ public class PlayerMovement : MonoBehaviour {
     void SetAnimatorBools(bool left, bool right) {
         animator.SetBool(Direction.Left.ToString(), left);
         animator.SetBool(Direction.Right.ToString(), right);
+    }
+    
+    bool RaycastHorizontal(Vector3 dir) {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 0.15f, LayerMask);
+        if (hit.collider != null) {
+            return true;
+        }
+
+        return false;
     }
 }
