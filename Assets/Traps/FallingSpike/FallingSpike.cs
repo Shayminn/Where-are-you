@@ -12,6 +12,7 @@ public class FallingSpike : MonoBehaviour
 
     Vector3 originalPos;
     bool Respawning = false;
+    bool Falling = false;
 
     private void Start() {
         originalPos = transform.position;
@@ -24,12 +25,13 @@ public class FallingSpike : MonoBehaviour
 
             if (hit.collider != null) {
                 rb2.gravityScale = 1;
+                Falling = true;
             }
         }
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        if (!Respawning) {
+        if (!Respawning && Falling) {
 
             Crackable.Crack();
             StartCoroutine(Respawn());
@@ -57,6 +59,7 @@ public class FallingSpike : MonoBehaviour
             yield return null;
         }
 
+        Falling = false;
         Respawning = false;
     }
 }
