@@ -44,4 +44,10 @@ public class RollingBall : MonoBehaviour
 
         StartBall();
     }
+
+    public void OnTriggerEnter2D(Collider2D collision) {
+        if (!MoveOnStart && collision.CompareTag("Player")) {
+            StartBall();
+        }
+    }
 }
