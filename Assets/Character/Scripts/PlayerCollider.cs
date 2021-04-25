@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollider : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerCollider : MonoBehaviour
 
     public void Die() {
         Debug.Log("DEAD");
+
+        DeathCounter.Instance.Increment();
 
         ChangeSpriteRendererColorAlpha(0);
 
