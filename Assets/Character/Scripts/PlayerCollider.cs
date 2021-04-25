@@ -8,6 +8,7 @@ public class PlayerCollider : MonoBehaviour
 {
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
+    [SerializeField] Rigidbody2D Rb2 = null;
     [SerializeField] PlayerDig PlayerDig = null;
     [SerializeField] PlayerMovement PlayerMovement = null;
 
@@ -87,6 +88,7 @@ public class PlayerCollider : MonoBehaviour
 
     public void ResetToSavePoint() {
         transform.position = SavePoint;
+        Rb2.velocity = Vector3.zero;
 
         PlayerDig.SetInventory(SavedInventory);
         

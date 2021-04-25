@@ -224,9 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 6022848671594547766}
+  Rb2: {fileID: 6168129701281445127}
   PlayerDig: {fileID: 3789592478952499944}
   PlayerMovement: {fileID: 8722317232774731704}
-  SoftDirtTile: {fileID: 0}
   SoftDirtMap: {fileID: 0}
   SoftDirtTilesPos: []
   SavePoint: {x: 0, y: 0, z: 0}
