@@ -37,7 +37,7 @@ public class TransitionScene : MonoBehaviour
     void Awake() {
         GetLines();
 
-        ContinueTextScript.SceneToChange = "Level " + CompletedLevel + 1;
+        ContinueTextScript.SceneToChange = "Level " + (CompletedLevel + 1);
         GameObject gyuStyfe = Resources.Load<GameObject>("GyuStyfe" + CompletedLevel);
         GyuStyfe = Instantiate(gyuStyfe);
         GyuStyfeAnimator = GyuStyfe.GetComponent<Animator>();
@@ -91,7 +91,14 @@ public class TransitionScene : MonoBehaviour
             yield return new WaitForSeconds(Delay);
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+
+        ContinueText.Play(animationToPlay);
+        ContinueTextScript.isDisplayed = true;
+
+        while (!Input.anyKeyDown) {
+            yield return null;
+        }
 
         StartCoroutine(FadeOutText());
 
@@ -99,9 +106,6 @@ public class TransitionScene : MonoBehaviour
         GyuStyfeAnimator.SetBool("Run", true);
 
         EndMove = true;
-
-        ContinueText.Play(animationToPlay);
-        ContinueTextScript.isDisplayed = true;
     }
 
     IEnumerator FadeOutText() {

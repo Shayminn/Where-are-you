@@ -775,7 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.05
   fullText: 'As he stands back up, he chuckles to himself: "It was that easy... All
-    my life I''ve been searching but in fact, I only had to Fall in Love, literally."'
+    my life I''ve been searching but in fact, I only had to Fall in Love. Literally."'
   onStart: 0
   isDone: 0
 --- !u!95 &1033453162
