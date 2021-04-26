@@ -55,13 +55,13 @@ public class TransitionScene : MonoBehaviour
     void FixedUpdate() {
         if (StartMove) {
             Player.transform.position = Vector3.MoveTowards(Player.transform.position, PlayerStartPosition, MoveSpeed * Time.fixedDeltaTime);
-            if (Vector3.Distance(Player.transform.position, PlayerStartPosition) < 0.1f) {
+            if (Vector3.Distance(Player.transform.position, PlayerStartPosition) < 0.15f) {
                 PlayerAnimator.SetBool("Left", false);
                 StartMove = false;
             }
 
             GyuStyfe.transform.position = Vector3.MoveTowards(GyuStyfe.transform.position, GyuStyfeStartPosition, MoveSpeed * Time.fixedDeltaTime);
-            if (Vector3.Distance(GyuStyfe.transform.position, GyuStyfeStartPosition) < 0.1f) {
+            if (Vector3.Distance(GyuStyfe.transform.position, GyuStyfeStartPosition) < 0.15f) {
                 GyuStyfeAnimator.SetBool("Run", false);
                 StartMove = false;
             }

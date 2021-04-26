@@ -2626,8 +2626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182960193bce85e439f2b7ed8756675d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathCounterText: {fileID: 0}
-  CollectibleCounterText: {fileID: 0}
+  DeathCounterText: {fileID: 1742402154160315554}
+  CollectibleCounterText: {fileID: 3344491200771323051}
 --- !u!114 &396141598
 MonoBehaviour:
   m_ObjectHideFlags: 0
