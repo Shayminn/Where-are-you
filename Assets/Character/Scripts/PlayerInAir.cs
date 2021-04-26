@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInAir : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D Rb2 = null;
     public LayerMask LayerMask;
 
     public float Distance = 0.3f;

@@ -14,6 +14,7 @@ public class Crackable : MonoBehaviour {
         targetPos.z -= 0.1f;
 
         GameObject obj = Instantiate(CrackedVersion, targetPos, CrackedVersion.transform.rotation);
+        obj.transform.localScale = transform.localScale;
 
         Destroy(obj, 1f);
     }
