@@ -101,7 +101,7 @@ public class PlayerCollider : MonoBehaviour
         Rb2.velocity = Vector3.zero;
 
         PlayerDig.SetInventory(SavedInventory);
-        CollectibleCounter.CollectibleCollected = SavedCollectible;
+        CollectibleCounter.Instance.SetCollectibleCounter(SavedCollectible);
 
         SoftDirtMap.ClearAllTiles();
         foreach(Vector3Int pos in SoftDirtTilesPos) {

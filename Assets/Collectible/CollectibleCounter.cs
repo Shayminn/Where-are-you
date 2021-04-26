@@ -35,6 +35,14 @@ public class CollectibleCounter : MonoBehaviour
         StartCoroutine(FadeOut());
     }
 
+    public void SetCollectibleCounter(int collectibleCollected) {
+        CollectibleCounter.CollectibleCollected = collectibleCollected;
+
+        CollectibleText.text = CollectibleCollected + " / " + MaximumCollectibles;
+
+        FadeOut();
+    }
+
     IEnumerator FadeOut() {
         Color color = CollectibleText.color;
         color.a = 1;

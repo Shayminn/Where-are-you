@@ -192,6 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2993021166120229447, guid: 7a495d0cf619716498b63414389ed3c4,
         type: 3}
+      propertyPath: Tutorial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993021166120229447, guid: 7a495d0cf619716498b63414389ed3c4,
+        type: 3}
       propertyPath: SceneToChange
       value: Level 1
       objectReference: {fileID: 0}
