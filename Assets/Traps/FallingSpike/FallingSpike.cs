@@ -10,6 +10,7 @@ public class FallingSpike : MonoBehaviour
     [SerializeField] Crackable Crackable = null;
 
     public LayerMask LayerMask;
+    public LayerMask HitLayerMask;
 
     Vector3 originalPos;
     bool Respawning = false;
@@ -39,9 +40,11 @@ public class FallingSpike : MonoBehaviour
             Falling = true;
         }
 
-        if (!Respawning && Falling) {
-            Crackable.Crack();
-            StartCoroutine(Respawn());
+        if (((1 << collision.collider.gameObject.layer) & HitLayerMask) != 0) {
+            if (!Respawning && Falling) {
+                Crackable.Crack();
+                StartCoroutine(Respawn());
+            }
         }
     }
 

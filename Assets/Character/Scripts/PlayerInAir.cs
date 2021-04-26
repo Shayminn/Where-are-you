@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInAir : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D Rb2 = null;
     public LayerMask LayerMask;
 
     public float Distance = 0.3f;
@@ -15,15 +16,12 @@ public class PlayerInAir : MonoBehaviour
     {
         Vector3 currTrans = transform.position;
 
-        Debug.DrawRay(currTrans, -Vector2.up, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);
 
         currTrans.x -= LeftRight;
-        Debug.DrawRay(currTrans, -Vector2.up, Color.red);
         RaycastHit2D hitLeft = Physics2D.Raycast(currTrans, -Vector2.up, Distance, LayerMask);
 
         currTrans.x += LeftRight * 2;
-        Debug.DrawRay(currTrans, -Vector2.up, Color.red);
         RaycastHit2D hitRight = Physics2D.Raycast(currTrans, -Vector2.up, Distance, LayerMask);
 
         if (hit.collider != null ||
