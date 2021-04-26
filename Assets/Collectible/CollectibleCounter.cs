@@ -12,8 +12,8 @@ public class CollectibleCounter : MonoBehaviour
     public static int CollectibleCollected = 0;
     public Image CollectibleImage;
     public Text CollectibleText;
-    public int MaximumCollectibles;
     public float FadeOutDelay = 3f;
+    public int MaximumCollectibles;
 
     // Start is called before the first frame update
     void Start()
