@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74395ef5be063a43bd811e95eb64cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.075
+  delay: 0.05
   fullText: In a lonely town far far away, there was a wizard.\nA wizard so powerful
     that no one, not even the demon lord himself...
   onStart: 1

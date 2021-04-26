@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 397393783914123977}
-  firstSceneName: Level 1
+  firstSceneName: MainMenu
   changeDelay: 0.5
 --- !u!95 &397393783914123977
 Animator:

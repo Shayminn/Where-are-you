@@ -884,6 +884,8 @@ MonoBehaviour:
   - {fileID: 1033453161}
   delay: 0.1
   animationToPlay: fade_in
+  GyuStyfe: {fileID: 1424378286}
+  IndexToFadeIn: 5
 --- !u!114 &1343184286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,6 +975,101 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1424378285
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1264928639934998112, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_Name
+      value: GyuStyfe5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769897348950519898, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833383934082504447, guid: 01b8d6723d767df47ba9216972ef4b91,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01b8d6723d767df47ba9216972ef4b91, type: 3}
+--- !u!95 &1424378286 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1923411056425126918, guid: 01b8d6723d767df47ba9216972ef4b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1424378285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1646449539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.05
-  fullText: 'As he falls to the ground... he hears footsteps approaching. '
+  fullText: 'Lying on the ground, he hears footsteps approaching. '
   onStart: 0
   isDone: 0
 --- !u!95 &1646449542
@@ -1372,7 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.05
-  fullText: 'In the shadows, he hears the voice of girl say: "Aww, don''t be sad,
+  fullText: 'In the shadows, he hears the voice of a girl say: "Aww, don''t be sad,
     because sad backward is das, and das not good! Hehe."'
   onStart: 0
   isDone: 0

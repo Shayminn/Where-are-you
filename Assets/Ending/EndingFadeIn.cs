@@ -12,17 +12,26 @@ public class EndingFadeIn : MonoBehaviour {
     public float delay = 0.1f;
     public string animationToPlay = "fade_in";
 
+    public Animator GyuStyfe;
+    public int IndexToFadeIn = 5;
+
     // Start is called before the first frame update
     void Start() {
         this.StartCoroutine(CheckIsDone());
     }
 
     IEnumerator CheckIsDone() {
+        int index = 0;
+
         while (EndingTexts.Count > 0) {
             StartCoroutine(EndingTexts[0].ShowText());
 
             while (!EndingTexts[0].isDone) {
                 yield return new WaitForSeconds(delay);
+            }
+
+            if (++index == IndexToFadeIn) {
+                GyuStyfe.Play(animationToPlay);
             }
 
             EndingTexts.RemoveAt(0);
