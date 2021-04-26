@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditScene : MonoBehaviour
-{
+public class CreditScene : MonoBehaviour {
     [SerializeField] Text DeathCounterText = null;
     [SerializeField] Text CollectibleCounterText = null;
 

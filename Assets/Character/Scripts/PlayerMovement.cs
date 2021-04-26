@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float Speed = 1;
@@ -48,17 +47,16 @@ public class PlayerMovement : MonoBehaviour {
 
         if (!PlayerInAir.InAir) {
             if (Input.GetKeyDown(Jump)) {
-                Debug.Log("JUMP");
-                Rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);   
+                Rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);
             }
-        }  
+        }
     }
 
     void SetAnimatorBools(bool left, bool right) {
         Animator.SetBool(Direction.Left.ToString(), left);
         Animator.SetBool(Direction.Right.ToString(), right);
     }
-    
+
     bool RaycastHorizontal(Vector3 dir) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 0.15f, LayerMask);
         if (hit.collider != null) {

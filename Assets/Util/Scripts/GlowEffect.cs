@@ -1,15 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class GlowEffect : MonoBehaviour
-{
+public class GlowEffect : MonoBehaviour {
     public bool StartFadeIn = true;
 
-    void Start()
-    {
+    void Start() {
         Text text = GetComponent<Text>();
 
         if (StartFadeIn) {

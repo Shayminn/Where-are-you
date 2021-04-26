@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CollectibleCounter : MonoBehaviour
-{
+public class CollectibleCounter : MonoBehaviour {
     public static CollectibleCounter Instance;
 
     public static bool FirstRun = true;
@@ -16,8 +14,7 @@ public class CollectibleCounter : MonoBehaviour
     public int MaximumCollectibles;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         if (FirstRun) {
             FirstRun = false;
             Instance = this;

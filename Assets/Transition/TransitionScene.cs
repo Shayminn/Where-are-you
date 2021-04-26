@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TransitionScene : MonoBehaviour
-{
+public class TransitionScene : MonoBehaviour {
     public static int CompletedLevel = 0;
 
     [SerializeField] TypeWriterEffect PickUpLine = null;
@@ -17,7 +15,7 @@ public class TransitionScene : MonoBehaviour
     [SerializeField] Animator GyuStyfeAnimator = null;
 
     [SerializeField] Animator ContinueText = null;
-    
+
     public ContinueScript ContinueTextScript = null;
     public string animationToPlay = "fade_in";
 
@@ -44,8 +42,7 @@ public class TransitionScene : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         PlayerAnimator.SetBool("Left", true);
         GyuStyfeAnimator.SetBool("Run", true);
 
@@ -65,7 +62,7 @@ public class TransitionScene : MonoBehaviour
                 GyuStyfeAnimator.SetBool("Run", false);
                 StartMove = false;
             }
-        }    
+        }
         else if (EndMove) {
             Player.transform.position = Vector3.MoveTowards(Player.transform.position, PlayerEndPosition, MoveSpeed * Time.fixedDeltaTime);
             GyuStyfe.transform.position = Vector3.MoveTowards(GyuStyfe.transform.position, GyuStyfeEndPosition, MoveSpeed * Time.fixedDeltaTime);
@@ -73,7 +70,7 @@ public class TransitionScene : MonoBehaviour
     }
 
     IEnumerator CheckIsDone() {
-        
+
 
         yield return new WaitForSeconds(1f);
 
@@ -113,8 +110,8 @@ public class TransitionScene : MonoBehaviour
         Text rejectionLineText = RejectionLine.GetComponent<Text>();
 
         Color color = pickUpLineText.color;
-        
-        while(color.a > 0) {
+
+        while (color.a > 0) {
             color.a -= Time.deltaTime;
 
             pickUpLineText.color = color;

@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialTextCollider : MonoBehaviour
-{
+public class TutorialTextCollider : MonoBehaviour {
     [SerializeField] TutorialNames TutorialName = TutorialNames.Move;
 
     [SerializeField] TutorialStyle TutStyle = TutorialStyle.KeyCode;

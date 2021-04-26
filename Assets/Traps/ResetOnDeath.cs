@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ResetOnDeath : MonoBehaviour
-{
+public abstract class ResetOnDeath : MonoBehaviour {
     protected Vector3 StartingPosition;
     public bool Started = false;
     public bool NeedsReset = true;
 
     protected void Start() {
-        StartingPosition = transform.position;    
+        StartingPosition = transform.position;
     }
 
     public abstract void StartTrap();

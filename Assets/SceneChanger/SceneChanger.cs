@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
-{
+public class SceneChanger : MonoBehaviour {
     [SerializeField] Animator animator = null;
 
     [SerializeField] string firstSceneName = "";
@@ -17,18 +15,15 @@ public class SceneChanger : MonoBehaviour
     static bool firstRun = true;
     static bool changingScenes = false;
 
-    private void Start()
-    {
-        if (firstRun)
-        {
+    private void Start() {
+        if (firstRun) {
             firstRun = false;
 
             StartCoroutine(LateStart());
         }
     }
 
-    IEnumerator LateStart()
-    {
+    IEnumerator LateStart() {
         yield return new WaitForEndOfFrame();
 
         // Change square size according to screen size
@@ -39,16 +34,14 @@ public class SceneChanger : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void ChangeScene(string sceneName)
-    {
+    public void ChangeScene(string sceneName) {
         if (!changingScenes) {
             this.sceneName = sceneName;
             StartCoroutine(SceneChange());
         }
     }
 
-    IEnumerator SceneChange()
-    {
+    IEnumerator SceneChange() {
         changingScenes = true;
 
         yield return new WaitForSeconds(changeDelay);
@@ -58,13 +51,11 @@ public class SceneChanger : MonoBehaviour
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
 
-        while (!asyncOperation.isDone)
-        {
+        while (!asyncOperation.isDone) {
             AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
 
             if (asyncOperation.progress >= 0.9f
-                && state.length < state.normalizedTime)
-            {
+                && state.length < state.normalizedTime) {
                 asyncOperation.allowSceneActivation = true;
                 animator.Play("fadeOut");
             }

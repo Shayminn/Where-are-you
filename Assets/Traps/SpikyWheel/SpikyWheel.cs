@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikyWheel : ResetOnDeath
-{
+public class SpikyWheel : ResetOnDeath {
     [SerializeField] List<Vector3> TargetPositions = new List<Vector3>();
     [SerializeField] RotateAroundSelf RotateAroundSelf = null;
     [SerializeField] float DelayBeforeMoving = 3f;
@@ -17,8 +16,7 @@ public class SpikyWheel : ResetOnDeath
     Coroutine Move;
 
     // Start is called before the first frame update
-    new void Start()
-    {
+    new void Start() {
         base.Start();
 
         if (Immobile) {
@@ -26,7 +24,7 @@ public class SpikyWheel : ResetOnDeath
         }
 
         TargetPositions.Insert(0, transform.position);
-        
+
         StartTrap();
     }
 

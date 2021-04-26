@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CrackedPieces : MonoBehaviour
-{
+public class CrackedPieces : MonoBehaviour {
     Rigidbody2D Rb2;
     PolygonCollider2D PolygonCollider2D;
     public LayerMask LayerMask;

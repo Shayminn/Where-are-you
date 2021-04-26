@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateAroundSelf : MonoBehaviour
-{
+public class RotateAroundSelf : MonoBehaviour {
     [SerializeField] float DegreePerSecond = 1;
     [SerializeField] bool Clockwise = true;
 
@@ -14,8 +11,7 @@ public class RotateAroundSelf : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         transform.Rotate(sign * Vector3.forward * DegreePerSecond * Time.fixedDeltaTime);
     }
 

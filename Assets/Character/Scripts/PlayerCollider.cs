@@ -1,12 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
-public class PlayerCollider : MonoBehaviour
-{
+public class PlayerCollider : MonoBehaviour {
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
     [SerializeField] Rigidbody2D Rb2 = null;
@@ -39,7 +36,7 @@ public class PlayerCollider : MonoBehaviour
     void Update() {
         if (!Dead && Input.GetKeyDown(Reset)) {
             Die();
-        }    
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
@@ -49,8 +46,6 @@ public class PlayerCollider : MonoBehaviour
     }
 
     public void Die() {
-        Debug.Log("DEAD");
-
         Dead = true;
         DeathCounter.Instance.Increment();
 
@@ -110,11 +105,11 @@ public class PlayerCollider : MonoBehaviour
         CollectibleCounter.Instance.SetCollectibleCounter(SavedCollectible);
 
         SoftDirtMap.ClearAllTiles();
-        foreach(Vector3Int pos in SoftDirtTilesPos) {
+        foreach (Vector3Int pos in SoftDirtTilesPos) {
             SoftDirtMap.SetTile(pos, SoftDirtTile);
         }
 
-        foreach(ResetOnDeath reset in ObjsToReset) {
+        foreach (ResetOnDeath reset in ObjsToReset) {
             reset.ResetTrap();
         }
 

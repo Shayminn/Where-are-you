@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeathCounter : MonoBehaviour
-{
+public class DeathCounter : MonoBehaviour {
     [SerializeField] Text DeathCountText = null;
-    [SerializeField] Text DeathCountCounter = null; 
+    [SerializeField] Text DeathCountCounter = null;
 
     public static DeathCounter Instance;
     public static float DeathCount = 0;
@@ -16,8 +14,7 @@ public class DeathCounter : MonoBehaviour
     static bool FirstRun = true;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         if (FirstRun) {
             FirstRun = false;
             DeathCounter.Instance = this;

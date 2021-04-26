@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class Lines 
-{
+public static class Lines {
     public static string[] PickUpLines = new string[] {
         "Are you a pokemon? Because I'd hit you with my balls.",
         "Mario is red, Sonic is blue, grab a controller and be my player 2.",

@@ -33,15 +33,12 @@ public class PlayerDig : MonoBehaviour {
         if (Input.GetKeyDown(DigOrPlace) || Input.GetKeyDown(DigOrPlace2)) {
             if (!PlayerInAir.InAir) {
                 // Dig ground
-                Debug.Log("Dig");
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);
 
                 if (hit.collider != null) {
                     Tilemap map = hit.collider.GetComponent<Tilemap>();
 
-                    if (map.CompareTag("Diggable"))
-                    {
-                        Debug.Log(map.tag);
+                    if (map.CompareTag("Diggable")) {
                         Vector3Int cellPos = map.WorldToCell(hit.point);
                         cellPos.y -= 1;
 
@@ -53,7 +50,6 @@ public class PlayerDig : MonoBehaviour {
             }
             else {
                 // Place ground
-                Debug.Log("Place ground");
 
                 if (Inventory > 0) {
                     Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);

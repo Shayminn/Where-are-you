@@ -15,7 +15,7 @@ public class PauseUI : MonoBehaviour {
     bool Opened = false;
 
     void Start() {
-        VolumeSlider.value = AudioManager.Instance.GetVolume();    
+        VolumeSlider.value = AudioManager.Instance.GetVolume();
     }
 
     // Update is called once per frame

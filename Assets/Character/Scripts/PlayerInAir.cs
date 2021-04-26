@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInAir : MonoBehaviour
-{
+public class PlayerInAir : MonoBehaviour {
     public LayerMask LayerMask;
 
     public float Distance = 0.3f;
@@ -11,8 +8,7 @@ public class PlayerInAir : MonoBehaviour
     public bool InAir = false;
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Vector3 currTrans = transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);

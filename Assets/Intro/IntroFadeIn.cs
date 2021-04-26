@@ -8,7 +8,7 @@ public class IntroFadeIn : MonoBehaviour {
     public ContinueScript ContinueTextScript = null;
 
     public TypeWriterEffect typeWriterEffect = null;
-    
+
     public float delay = 0.1f;
     public string animationToPlay = "fade_in";
 

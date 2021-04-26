@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
     [SerializeField] AudioSource BackgroundAudio = null;
     [SerializeField] AudioSource SFXAudio = null;
 
@@ -24,8 +23,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         if (FirstRun) {
             FirstRun = false;
             ResetList();

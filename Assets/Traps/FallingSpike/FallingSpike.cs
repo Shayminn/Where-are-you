@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingSpike : MonoBehaviour
-{
+public class FallingSpike : MonoBehaviour {
     [SerializeField] Rigidbody2D Rb2 = null;
     [SerializeField] SpriteRenderer SpriteRenderer = null;
     [SerializeField] PolygonCollider2D PolygonCollider2D = null;

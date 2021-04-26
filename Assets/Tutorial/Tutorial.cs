@@ -77,7 +77,7 @@ public class Tutorial : MonoBehaviour {
         bool success = false;
         while (!success) {
 
-            foreach(KeyCode kc in keyCodes) {
+            foreach (KeyCode kc in keyCodes) {
                 if (Input.GetKeyDown(kc)) {
                     success = true;
                     break;
