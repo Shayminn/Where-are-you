@@ -37,7 +37,7 @@ public class PlayerCollider : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(Reset)) {
+        if (!Dead && Input.GetKeyDown(Reset)) {
             Die();
         }    
     }
@@ -53,6 +53,8 @@ public class PlayerCollider : MonoBehaviour
 
         Dead = true;
         DeathCounter.Instance.Increment();
+
+        AudioManager.Instance.PlaySFX(AudioManager.SFX.Death);
 
         ChangeSpriteRendererColorAlpha(0);
 

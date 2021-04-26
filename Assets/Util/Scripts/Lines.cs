@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Lines 
 {
     public static string[] PickUpLines = new string[] {
-        "Are you a pokemon, because I'd hit you with my balls.",
+        "Are you a pokemon? Because I'd hit you with my balls.",
         "Mario is red, Sonic is blue, grab a controller and be my player 2.",
         "If earth didn't have gravity, I would still fall for you.",
         "I'm not a photographer but I can picture you and me together.",

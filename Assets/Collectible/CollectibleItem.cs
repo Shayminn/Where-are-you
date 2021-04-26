@@ -10,6 +10,9 @@ public class CollectibleItem : MonoBehaviour
         if (!Collected && collision.CompareTag("Player")) {
             Collected = true;
             CollectibleCounter.Instance.IncreaseCounter();
+
+            AudioManager.Instance.PlaySFX(AudioManager.SFX.Heart);
+
             Destroy(gameObject);
         }
     }

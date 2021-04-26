@@ -7,15 +7,27 @@ public class PauseUI : MonoBehaviour {
     [SerializeField] Text DeathCounterText = null;
     [SerializeField] Text CollectibleCounterText = null;
 
+    [SerializeField] Slider VolumeSlider = null;
+    [SerializeField] Text VolumeText = null;
+
     readonly KeyCode Open = KeyCode.Escape;
 
     bool Opened = false;
 
+    void Start() {
+        VolumeSlider.value = AudioManager.Instance.GetVolume();    
+    }
+
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(Open)) {
-            if (!Opened) {
-                OpenUI();
+            if (PausePanelAnimator.GetCurrentAnimatorStateInfo(0).length < PausePanelAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime) {
+                if (!Opened) {
+                    OpenUI();
+                }
+                else {
+                    CloseUI();
+                }
             }
         }
     }
@@ -57,5 +69,13 @@ public class PauseUI : MonoBehaviour {
 
     public void Exit() {
         Application.Quit();
+    }
+
+    public void OnSliderChange() {
+        float vol = VolumeSlider.value;
+
+        AudioManager.Instance.AdjustVolume(vol);
+
+        VolumeText.text = Mathf.Round(vol * 100).ToString();
     }
 }
