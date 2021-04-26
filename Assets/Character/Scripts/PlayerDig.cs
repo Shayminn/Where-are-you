@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerDig : MonoBehaviour {
     [SerializeField] PlayerInAir PlayerInAir = null;
     [SerializeField] Text InventoryText = null;
+    [SerializeField] float Distance = 0.3f;
 
     public LayerMask LayerMask;
 
@@ -33,7 +34,7 @@ public class PlayerDig : MonoBehaviour {
             if (!PlayerInAir.InAir) {
                 // Dig ground
                 Debug.Log("Dig");
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, LayerMask);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);
 
                 if (hit.collider != null) {
                     Tilemap map = hit.collider.GetComponent<Tilemap>();
@@ -60,14 +61,8 @@ public class PlayerDig : MonoBehaviour {
 
                     TileBase softTile = SoftDirtMap.GetTile(cellPos);
                     TileBase hardTile = HardDirtMap.GetTile(cellPos);
-                    TileBase trapTile = TrapsMap.GetTile(cellPos);
 
                     if (softTile == null && hardTile == null) {
-
-                        //if (trapTile != null) {
-                        //    TrapsMap.SetTile(cellPos, null);
-                        //}
-
                         SoftDirtMap.SetTile(cellPos, DigDirtTile);
                         InventoryChange(-1);
                     }
