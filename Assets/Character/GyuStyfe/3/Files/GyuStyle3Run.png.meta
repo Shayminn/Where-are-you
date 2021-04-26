@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 36a8e0fc1c07c4048bada803234c4432
+guid: e9dd8d4f21c33384698682fdc240c5da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4336241606875736818
-    second: GyuStyfe2Idle_0
+      213: 8774691116889212921
+    second: GyuStyle3Run_0
   - first:
-      213: 2498011727550596192
-    second: GyuStyfe2Idle_1
+      213: 4496123262614795849
+    second: GyuStyle3Run_1
   - first:
-      213: -3948830849827846384
-    second: GyuStyfe2Idle_2
-  - first:
-      213: -2047433240047790316
-    second: GyuStyfe2Idle_3
+      213: 1220486798858110605
+    second: GyuStyle3Run_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -87,17 +84,53 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GyuStyfe2Idle_0
+      name: GyuStyle3Run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 248
-        height: 264
+        width: 192
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0517e1ab3392d3c0800000000000000
-      internalID: -4336241606875736818
+      spriteID: 9f705fb9417f5c970800000000000000
+      internalID: 8774691116889212921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GyuStyfe2Idle_1
+      name: GyuStyle3Run_1
       rect:
         serializedVersion: 2
-        x: 248
+        x: 192
         y: 0
-        width: 248
-        height: 264
+        width: 192
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 064c9616e68baa220800000000000000
-      internalID: 2498011727550596192
+      spriteID: 946768e2940756e30800000000000000
+      internalID: 4496123262614795849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GyuStyfe2Idle_2
+      name: GyuStyle3Run_2
       rect:
         serializedVersion: 2
-        x: 496
+        x: 384
         y: 0
-        width: 248
-        height: 264
+        width: 192
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,29 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01748ed834fe239c0800000000000000
-      internalID: -3948830849827846384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GyuStyfe2Idle_3
-      rect:
-        serializedVersion: 2
-        x: 744
-        y: 0
-        width: 248
-        height: 264
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 417df91e05e0693e0800000000000000
-      internalID: -2047433240047790316
+      spriteID: d86cdf2f64a00f010800000000000000
+      internalID: 1220486798858110605
       vertices: []
       indices: 
       edges: []
