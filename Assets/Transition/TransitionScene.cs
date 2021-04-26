@@ -49,7 +49,14 @@ public class TransitionScene : MonoBehaviour
     void FixedUpdate() {
         if (StartMove) {
             Player.transform.position = Vector3.MoveTowards(Player.transform.position, PlayerStartPosition, MoveSpeed * Time.fixedDeltaTime);
+            if (Player.transform.position == PlayerStartPosition) {
+                PlayerAnimator.SetBool("Run", false);
+            }
+
             GyuStyfe.transform.position = Vector3.MoveTowards(GyuStyfe.transform.position, GyuStyfeStartPosition, MoveSpeed * Time.fixedDeltaTime);
+            if (GyuStyfe.transform.position == GyuStyfeStartPosition) {
+                GyuStyfeAnimator.SetBool("Run", false);
+            }
         }    
         else if (EndMove) {
             Player.transform.position = Vector3.MoveTowards(Player.transform.position, PlayerEndPosition, MoveSpeed * Time.fixedDeltaTime);

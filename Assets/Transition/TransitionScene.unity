@@ -157,11 +157,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpLine: {fileID: 1364779526}
   RejectionLine: {fileID: 738895553}
+  Player: {fileID: 0}
   PlayerAnimator: {fileID: 0}
+  GyuStyfe: {fileID: 0}
   GyuStyfeAnimator: {fileID: 0}
   ContinueText: {fileID: 1508584978}
   ContinueTextScript: {fileID: 1508584974}
   animationToPlay: fade_in
+  PlayerStartPosition: {x: 0, y: 0, z: 0}
+  PlayerEndPosition: {x: 0, y: 0, z: 0}
+  GyuStyfeStartPosition: {x: 0, y: 0, z: 0}
+  GyuStyfeEndPosition: {x: 0, y: 0, z: 0}
+  MoveSpeed: 5
 --- !u!114 &7064392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.075
   fullText: '[Insert pickup line]'
-  onStart: 1
+  onStart: 0
   isDone: 0
 --- !u!114 &1364779527
 MonoBehaviour:
