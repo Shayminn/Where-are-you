@@ -22,7 +22,7 @@ public class RollingBall : ResetOnDeath {
         }
 
         if (MoveOnStart) {
-            StartTrap();
+            Invoke(nameof(StartTrap), 0.05f);
         }
     }
 
@@ -31,6 +31,8 @@ public class RollingBall : ResetOnDeath {
     }
 
     public override void StartTrap() {
+        Started = true;
+
         rb2.gravityScale = 1;
         AddForce();
     }

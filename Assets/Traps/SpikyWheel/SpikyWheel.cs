@@ -9,6 +9,8 @@ public class SpikyWheel : ResetOnDeath
     [SerializeField] float DelayBeforeMoving = 3f;
     [SerializeField] float MoveSpeed = 1f;
 
+    public bool Immobile = false;
+
     bool Reverse = false;
     int Index = 0;
 
@@ -19,8 +21,12 @@ public class SpikyWheel : ResetOnDeath
     {
         base.Start();
 
-        TargetPositions.Insert(0, transform.position);
+        if (Immobile) {
+            Destroy(this);
+        }
 
+        TargetPositions.Insert(0, transform.position);
+        
         StartTrap();
     }
 

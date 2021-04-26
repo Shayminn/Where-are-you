@@ -24,6 +24,8 @@ public class PlayerCollider : MonoBehaviour
     [SerializeField] GameObject CollectibleObj = null;
     public int SavedCollectible;
 
+    public ResetOnDeath[] ObjsToReset;
+
     public float ReviveDelay = 1f;
 
     bool Dead = false;
@@ -94,6 +96,8 @@ public class PlayerCollider : MonoBehaviour
         foreach (CollectibleItem heart in FindObjectsOfType<CollectibleItem>()) {
             CollectiblePos.Add(heart.transform.position);
         }
+
+        ObjsToReset = FindObjectsOfType<ResetOnDeath>().Where(trap => !trap.Started).ToArray();
     }
 
     public void ResetToSavePoint() {
@@ -108,9 +112,7 @@ public class PlayerCollider : MonoBehaviour
             SoftDirtMap.SetTile(pos, SoftDirtTile);
         }
 
-        ResetOnDeath[] objsToReset = FindObjectsOfType<ResetOnDeath>();
-
-        foreach(ResetOnDeath reset in objsToReset) {
+        foreach(ResetOnDeath reset in ObjsToReset) {
             reset.ResetTrap();
         }
 
