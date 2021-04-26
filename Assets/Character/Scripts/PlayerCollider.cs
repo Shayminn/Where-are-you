@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -15,9 +16,13 @@ public class PlayerCollider : MonoBehaviour
     Tile SoftDirtTile = null;
     [SerializeField] Tilemap SoftDirtMap = null;
     public List<Vector3Int> SoftDirtTilesPos = new List<Vector3Int>();
+    public List<Vector3> CollectiblePos = new List<Vector3>();
 
     public Vector3 SavePoint;
     public int SavedInventory;
+
+    [SerializeField] GameObject CollectibleObj = null;
+    public int SavedCollectible;
 
     public float ReviveDelay = 1f;
 
@@ -26,7 +31,7 @@ public class PlayerCollider : MonoBehaviour
     readonly KeyCode Reset = KeyCode.R;
 
     void Start() {
-        SoftDirtTile = Resources.Load<Tile>("DigDirt");    
+        SoftDirtTile = Resources.Load<Tile>("DigDirt");
     }
 
     void Update() {
@@ -76,6 +81,7 @@ public class PlayerCollider : MonoBehaviour
         SavePoint = savePointPos;
 
         SavedInventory = PlayerDig.Inventory;
+        SavedCollectible = CollectibleCounter.CollectibleCollected;
 
         SoftDirtTilesPos.Clear();
         foreach (var pos in SoftDirtMap.cellBounds.allPositionsWithin) {
@@ -84,6 +90,10 @@ public class PlayerCollider : MonoBehaviour
                 SoftDirtTilesPos.Add(localPlace);
             }
         }
+
+        foreach (CollectibleItem heart in FindObjectsOfType<CollectibleItem>()) {
+            CollectiblePos.Add(heart.transform.position);
+        }
     }
 
     public void ResetToSavePoint() {
@@ -91,7 +101,8 @@ public class PlayerCollider : MonoBehaviour
         Rb2.velocity = Vector3.zero;
 
         PlayerDig.SetInventory(SavedInventory);
-        
+        CollectibleCounter.CollectibleCollected = SavedCollectible;
+
         SoftDirtMap.ClearAllTiles();
         foreach(Vector3Int pos in SoftDirtTilesPos) {
             SoftDirtMap.SetTile(pos, SoftDirtTile);
@@ -102,5 +113,20 @@ public class PlayerCollider : MonoBehaviour
         foreach(ResetOnDeath reset in objsToReset) {
             reset.ResetTrap();
         }
+
+        CollectibleItem[] hearts = FindObjectsOfType<CollectibleItem>();
+        foreach (Vector3 pos in CollectiblePos) {
+            if (hearts.Length > 0) {
+                CollectibleItem heart = hearts.FirstOrDefault(heart => heart.transform.position == pos);
+
+                if (heart == null) {
+                    Instantiate(CollectibleObj, pos, CollectibleObj.transform.rotation);
+                }
+            }
+            else {
+                Instantiate(CollectibleObj, pos, CollectibleObj.transform.rotation);
+            }
+        }
+
     }
 }

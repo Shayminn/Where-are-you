@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -66090339
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 6d067a21909211643b3bb98b714c7b41,
     type: 3}
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInAir: {fileID: 6258198965000227212}
   InventoryText: {fileID: 0}
+  Distance: 0.3
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -229,6 +230,10 @@ MonoBehaviour:
   PlayerMovement: {fileID: 8722317232774731704}
   SoftDirtMap: {fileID: 0}
   SoftDirtTilesPos: []
+  CollectiblePos: []
   SavePoint: {x: 0, y: 0, z: 0}
   SavedInventory: 0
+  CollectibleObj: {fileID: 3904712277652191997, guid: 6b96fa693a2fe424388045a9dfc51a8f,
+    type: 3}
+  SavedCollectible: 0
   ReviveDelay: 1

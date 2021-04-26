@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74395ef5be063a43bd811e95eb64cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.025
   fullText: '[Insert rejection line]'
   onStart: 0
   isDone: 0
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74395ef5be063a43bd811e95eb64cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.025
   fullText: '[Insert pickup line]'
   onStart: 0
   isDone: 0
