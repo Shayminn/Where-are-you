@@ -536,6 +536,7 @@ MonoBehaviour:
   fullText: The all powerful wizard, having found girlfriend deep down in the dungeon,
     feels accomplished.\n\nThus marked the end of the searching quest, the wizard
     and his new partner live happily ever after...
+  onStart: 1
   isDone: 0
 --- !u!1 &741083155
 GameObject:
@@ -963,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d843de7c3577ce428d6986b19e73c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToChange: MainMenu
+  SceneToChange: CreditScene
   isDisplayed: 0
 --- !u!95 &1812332837
 Animator:

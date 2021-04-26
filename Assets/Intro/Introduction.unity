@@ -691,6 +691,7 @@ MonoBehaviour:
   delay: 0.075
   fullText: In a lonely town far far away, there was a wizard.\nA wizard so powerful
     that no one, not even the demon lord himself...
+  onStart: 1
   isDone: 0
 --- !u!1 &1782925408
 GameObject:
@@ -804,5 +805,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d843de7c3577ce428d6986b19e73c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToChange: Tutorial Scene
+  SceneToChange: TutorialScene
   isDisplayed: 0

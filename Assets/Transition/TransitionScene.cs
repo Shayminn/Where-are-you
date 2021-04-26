@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class TransitionScene : MonoBehaviour
 {
-    public static string PickUpLineText;
-    public static string RejectionLineText;
+    public static int CompletedLevel = 0;
 
     [SerializeField] TypeWriterEffect PickUpLine = null;
     [SerializeField] TypeWriterEffect RejectionLine = null;
@@ -36,26 +35,35 @@ public class TransitionScene : MonoBehaviour
     public float MoveSpeed = 5f;
 
     void Awake() {
-        PickUpLine.fullText = PickUpLineText;
-        RejectionLine.fullText = RejectionLineText; 
+        GetLines();
+
+        ContinueTextScript.SceneToChange = "Level " + CompletedLevel + 1;
+        GameObject gyuStyfe = Resources.Load<GameObject>("GyuStyfe" + CompletedLevel);
+        GyuStyfe = Instantiate(gyuStyfe);
+        GyuStyfeAnimator = GyuStyfe.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAnimator.SetBool("Left", true);
+        GyuStyfeAnimator.SetBool("Run", true);
+
         this.StartCoroutine(CheckIsDone());
     }
 
     void FixedUpdate() {
         if (StartMove) {
             Player.transform.position = Vector3.MoveTowards(Player.transform.position, PlayerStartPosition, MoveSpeed * Time.fixedDeltaTime);
-            if (Player.transform.position == PlayerStartPosition) {
-                PlayerAnimator.SetBool("Run", false);
+            if (Vector3.Distance(Player.transform.position, PlayerStartPosition) < 0.1f) {
+                PlayerAnimator.SetBool("Left", false);
+                StartMove = false;
             }
 
             GyuStyfe.transform.position = Vector3.MoveTowards(GyuStyfe.transform.position, GyuStyfeStartPosition, MoveSpeed * Time.fixedDeltaTime);
-            if (GyuStyfe.transform.position == GyuStyfeStartPosition) {
+            if (Vector3.Distance(GyuStyfe.transform.position, GyuStyfeStartPosition) < 0.1f) {
                 GyuStyfeAnimator.SetBool("Run", false);
+                StartMove = false;
             }
         }    
         else if (EndMove) {
@@ -75,7 +83,7 @@ public class TransitionScene : MonoBehaviour
             yield return new WaitForSeconds(Delay);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine(RejectionLine.ShowText());
 
@@ -83,9 +91,39 @@ public class TransitionScene : MonoBehaviour
             yield return new WaitForSeconds(Delay);
         }
 
+        yield return new WaitForSeconds(3f);
 
+        StartCoroutine(FadeOutText());
+
+        PlayerAnimator.SetBool("Left", true);
+        GyuStyfeAnimator.SetBool("Run", true);
+
+        EndMove = true;
 
         ContinueText.Play(animationToPlay);
         ContinueTextScript.isDisplayed = true;
+    }
+
+    IEnumerator FadeOutText() {
+        Text pickUpLineText = PickUpLine.GetComponent<Text>();
+        Text rejectionLineText = RejectionLine.GetComponent<Text>();
+
+        Color color = pickUpLineText.color;
+        
+        while(color.a > 0) {
+            color.a -= Time.deltaTime;
+
+            pickUpLineText.color = color;
+            rejectionLineText.color = color;
+
+            yield return null;
+        }
+    }
+
+    void GetLines() {
+        string[] lines = Lines.GenerateRandomLines();
+
+        PickUpLine.fullText = lines[0];
+        RejectionLine.fullText = lines[1];
     }
 }

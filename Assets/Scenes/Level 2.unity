@@ -7314,5 +7314,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2993021166120229447, guid: 7a495d0cf619716498b63414389ed3c4,
+        type: 3}
+      propertyPath: SceneToChange
+      value: TransitionScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a495d0cf619716498b63414389ed3c4, type: 3}

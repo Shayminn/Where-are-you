@@ -13,13 +13,13 @@ public class DeathCounter : MonoBehaviour
 
     public float FadeOutDelay = 1f;
 
-    static bool FirstRun = false;
+    static bool FirstRun = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!FirstRun) {
-            FirstRun = true;
+        if (FirstRun) {
+            FirstRun = false;
             DeathCounter.Instance = this;
             DontDestroyOnLoad(gameObject);
         }
