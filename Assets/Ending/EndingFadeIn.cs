@@ -13,6 +13,7 @@ public class EndingFadeIn : MonoBehaviour {
     public string animationToPlay = "fade_in";
 
     public Animator GyuStyfe;
+    public SpriteRenderer GyuStyfeImg;
     public int IndexToFadeIn = 5;
 
     // Start is called before the first frame update
@@ -23,6 +24,8 @@ public class EndingFadeIn : MonoBehaviour {
     IEnumerator CheckIsDone() {
         int index = 0;
 
+        Color color = GyuStyfeImg.color;
+
         while (EndingTexts.Count > 0) {
             StartCoroutine(EndingTexts[0].ShowText());
 
@@ -31,7 +34,12 @@ public class EndingFadeIn : MonoBehaviour {
             }
 
             if (++index == IndexToFadeIn) {
-                GyuStyfe.Play(animationToPlay);
+                while (color.a < 1) {
+                    color.a += Time.deltaTime;
+                    GyuStyfeImg.color = color;
+
+                    yield return null;
+                }
             }
 
             EndingTexts.RemoveAt(0);
