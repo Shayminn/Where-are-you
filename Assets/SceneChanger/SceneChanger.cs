@@ -27,7 +27,7 @@ public class SceneChanger : MonoBehaviour {
         yield return new WaitForEndOfFrame();
 
         // Change square size according to screen size
-        transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+        transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 1080);
 
         SceneManager.LoadScene(firstSceneName);
         Instance = this;
