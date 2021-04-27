@@ -47,4 +47,9 @@ public class DeathCounter : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void ResetValues() {
+        DeathCount = 0;
+        DeathCountCounter.text = DeathCount.ToString();
+    }
 }

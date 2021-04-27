@@ -11,6 +11,9 @@ public class CreditScene : MonoBehaviour {
     }
 
     public void StartOver() {
+        CollectibleCounter.Instance.ResetValues();
+        DeathCounter.Instance.ResetValues();
+
         SceneChanger.Instance.ChangeScene("Level 1");
     }
 

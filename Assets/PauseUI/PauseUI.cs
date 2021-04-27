@@ -58,11 +58,17 @@ public class PauseUI : MonoBehaviour {
     public void RestartFromIntroduction() {
         CloseUI();
 
+        CollectibleCounter.Instance.ResetValues();
+        DeathCounter.Instance.ResetValues();
+
         SceneChanger.Instance.ChangeScene("Introduction");
     }
 
     public void RestartFromBeginning() {
         CloseUI();
+
+        CollectibleCounter.Instance.ResetValues();
+        DeathCounter.Instance.ResetValues();
 
         SceneChanger.Instance.ChangeScene("Level 1");
     }

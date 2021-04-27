@@ -58,4 +58,10 @@ public class CollectibleCounter : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void ResetValues() {
+        CollectibleCollected = 0;
+
+        CollectibleText.text = CollectibleCollected + " / " + MaximumCollectibles;
+    }
 }
