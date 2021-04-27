@@ -22,7 +22,7 @@ public class RollingBall : ResetOnDeath {
         }
 
         if (MoveOnStart) {
-            Invoke(nameof(StartTrap), 0.05f);
+            Invoke(nameof(StartTrap), 0.1f);
         }
     }
 
