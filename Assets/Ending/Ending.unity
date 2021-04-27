@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.05
-  fullText: As powerful as he may be... he will never find someone to love... someone
+  fullText: As powerful as he may be, he will never find someone to love... someone
     to protect, someone to care for...
   onStart: 0
   isDone: 0
