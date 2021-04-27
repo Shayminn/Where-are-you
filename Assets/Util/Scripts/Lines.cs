@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Lines {
-    public static string[] PickUpLines = new string[] {
+    public static List<string> PickUpLines = new List<string>() {
         "Are you a pokemon? Because I'd hit you with my balls.",
         "Mario is red, Sonic is blue, grab a controller and be my player 2.",
         "If earth didn't have gravity, I would still fall for you.",
@@ -16,7 +17,7 @@ public static class Lines {
         "Something is wrong with my cell phone... your numbers not in it."
     };
 
-    public static string[] RejectionLines = new string[] {
+    public static List<string> RejectionLines = new List<string>() {
         "Oh No! The Pokemon broke free!",
         "Sorry, but your princess is perhaps in another castle.",
         "Good luck because I'm not catching you.",
@@ -32,8 +33,13 @@ public static class Lines {
     };
 
     public static string[] GenerateRandomLines() {
-        int random = Random.Range(0, PickUpLines.Length);
+        int random = Random.Range(0, PickUpLines.Count);
 
-        return new string[2] { PickUpLines[random], RejectionLines[random] };
+        string[] lines = new string[2] { PickUpLines[random], RejectionLines[random] };
+
+        PickUpLines.RemoveAt(random);
+        RejectionLines.RemoveAt(random);
+
+        return lines;
     }
 }
