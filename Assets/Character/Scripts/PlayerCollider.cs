@@ -90,6 +90,7 @@ public class PlayerCollider : MonoBehaviour {
             }
         }
 
+        CollectiblePos.Clear();
         foreach (CollectibleItem heart in FindObjectsOfType<CollectibleItem>()) {
             CollectiblePos.Add(heart.transform.position);
         }
