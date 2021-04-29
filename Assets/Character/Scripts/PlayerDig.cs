@@ -16,8 +16,9 @@ public class PlayerDig : MonoBehaviour {
     Tile DigDirtTile;
     public int Inventory = 0;
 
-    readonly KeyCode DigOrPlace = KeyCode.LeftShift;
-    readonly KeyCode DigOrPlace2 = KeyCode.RightShift;
+    public static KeyCode DigAndPlace = KeyCode.K;
+
+    PauseUI PauseUI;
 
     void Start() {
         Transform smolGrid = GameObject.Find("SmolGrid").transform;
@@ -26,41 +27,45 @@ public class PlayerDig : MonoBehaviour {
         TrapsMap = smolGrid.Find("Traps").GetComponent<Tilemap>();
 
         DigDirtTile = Resources.Load<Tile>("DigDirt");
+
+        PauseUI = FindObjectOfType<PauseUI>();
     }
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(DigOrPlace) || Input.GetKeyDown(DigOrPlace2)) {
-            if (!PlayerInAir.InAir) {
-                // Dig ground
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);
+        if (!PauseUI.Opened) {
+            if (Input.GetKeyDown(DigAndPlace)) {
+                if (!PlayerInAir.InAir) {
+                    // Dig ground
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Distance, LayerMask);
 
-                if (hit.collider != null) {
-                    Tilemap map = hit.collider.GetComponent<Tilemap>();
+                    if (hit.collider != null) {
+                        Tilemap map = hit.collider.GetComponent<Tilemap>();
 
-                    if (map.CompareTag("Diggable")) {
-                        Vector3Int cellPos = map.WorldToCell(hit.point);
-                        cellPos.y -= 1;
+                        if (map.CompareTag("Diggable")) {
+                            Vector3Int cellPos = map.WorldToCell(hit.point);
+                            cellPos.y -= 1;
 
-                        map.SetTile(cellPos, null);
+                            map.SetTile(cellPos, null);
 
-                        InventoryChange(1);
+                            InventoryChange(1);
+                        }
                     }
                 }
-            }
-            else {
-                // Place ground
+                else {
+                    // Place ground
 
-                if (Inventory > 0) {
-                    Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);
-                    cellPos.y -= 1;
+                    if (Inventory > 0) {
+                        Vector3Int cellPos = SoftDirtMap.WorldToCell(transform.position);
+                        cellPos.y -= 1;
 
-                    TileBase softTile = SoftDirtMap.GetTile(cellPos);
-                    TileBase hardTile = HardDirtMap.GetTile(cellPos);
+                        TileBase softTile = SoftDirtMap.GetTile(cellPos);
+                        TileBase hardTile = HardDirtMap.GetTile(cellPos);
 
-                    if (softTile == null && hardTile == null) {
-                        SoftDirtMap.SetTile(cellPos, DigDirtTile);
-                        InventoryChange(-1);
+                        if (softTile == null && hardTile == null) {
+                            SoftDirtMap.SetTile(cellPos, DigDirtTile);
+                            InventoryChange(-1);
+                        }
                     }
                 }
             }

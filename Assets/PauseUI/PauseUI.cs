@@ -12,7 +12,7 @@ public class PauseUI : MonoBehaviour {
 
     readonly KeyCode Open = KeyCode.Escape;
 
-    bool Opened = false;
+    public bool Opened = false;
 
     void Start() {
         VolumeSlider.value = AudioManager.Instance.GetVolume();
@@ -53,15 +53,6 @@ public class PauseUI : MonoBehaviour {
 
     public void Resume() {
         CloseUI();
-    }
-
-    public void RestartFromIntroduction() {
-        CloseUI();
-
-        CollectibleCounter.Instance.ResetValues();
-        DeathCounter.Instance.ResetValues();
-
-        SceneChanger.Instance.ChangeScene("Introduction");
     }
 
     public void RestartFromBeginning() {

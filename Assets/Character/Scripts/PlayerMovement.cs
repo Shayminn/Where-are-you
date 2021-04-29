@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public LayerMask LayerMask;
 
-    readonly KeyCode MoveLeft = KeyCode.A;
-    readonly KeyCode MoveRight = KeyCode.D;
-    readonly KeyCode Jump = KeyCode.Space;
+    public static KeyCode MoveLeft = KeyCode.A;
+    public static KeyCode MoveRight = KeyCode.D;
+    public static KeyCode Jump = KeyCode.Space;
 
     float JumpPower = 3.75f;
 
@@ -19,35 +19,43 @@ public class PlayerMovement : MonoBehaviour {
         Right
     }
 
+    PauseUI PauseUI;
+
+    void Start() {
+        PauseUI = FindObjectOfType<PauseUI>();
+    }
+
     // Update is called once per frame
     void Update() {
-        if (!Input.GetKey(MoveLeft) && !Input.GetKey(MoveRight) ||
-            (Input.GetKey(MoveLeft) && Input.GetKey(MoveRight))) {
-            SetAnimatorBools(false, false);
-        }
-        else {
-            if (Input.GetKey(MoveLeft)) {
-                Vector3 move = -Vector3.right * Speed * Time.deltaTime;
-                if (!RaycastHorizontal(move)) {
-                    transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+        if (!PauseUI.Opened) {
+            if (!Input.GetKey(MoveLeft) && !Input.GetKey(MoveRight) ||
+                (Input.GetKey(MoveLeft) && Input.GetKey(MoveRight))) {
+                SetAnimatorBools(false, false);
+            }
+            else {
+                if (Input.GetKey(MoveLeft)) {
+                    Vector3 move = -Vector3.right * Speed * Time.deltaTime;
+                    if (!RaycastHorizontal(move)) {
+                        transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+                    }
+
+                    SetAnimatorBools(true, false);
                 }
 
-                SetAnimatorBools(true, false);
-            }
+                if (Input.GetKey(MoveRight)) {
+                    Vector3 move = Vector3.right * Speed * Time.deltaTime;
+                    if (!RaycastHorizontal(move)) {
+                        transform.Translate(move);
+                    }
 
-            if (Input.GetKey(MoveRight)) {
-                Vector3 move = Vector3.right * Speed * Time.deltaTime;
-                if (!RaycastHorizontal(move)) {
-                    transform.Translate(move);
+                    SetAnimatorBools(false, true);
                 }
-
-                SetAnimatorBools(false, true);
             }
-        }
 
-        if (!PlayerInAir.InAir) {
-            if (Input.GetKeyDown(Jump)) {
-                Rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);
+            if (!PlayerInAir.InAir) {
+                if (Input.GetKeyDown(Jump)) {
+                    Rb2.AddForce(Vector3.up * JumpPower, ForceMode2D.Impulse);
+                }
             }
         }
     }
