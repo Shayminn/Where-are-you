@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour {
 
     [SerializeField] Text[] TutorialTexts = null;
+    [SerializeField] GameObject EscapeText = null;
     public bool Last = false;
 
     public void StartTutorial(string tutorial) {
@@ -94,7 +95,7 @@ public class Tutorial : MonoBehaviour {
 
     void CheckLast() {
         if (Last) {
-            Destroy(gameObject);
+            EscapeText.SetActive(true);
         }
     }
 }

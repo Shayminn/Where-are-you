@@ -47,8 +47,6 @@ public class Keybinds : MonoBehaviour {
 
             foreach (KeyCode kc in Enum.GetValues(typeof(KeyCode))) {
                 if (Input.GetKeyDown(kc)) {
-
-                    Debug.Log(kc);
                     inputSent = true;
 
                     ChangeKeybind(kc);
@@ -62,8 +60,6 @@ public class Keybinds : MonoBehaviour {
 
     void ChangeKeybind(KeyCode kc) {
         foreach (KeyValuePair<Controls, KeyCode> kv in KeyControls) {
-
-            Debug.Log(SelectedButtonName + " " + kv.Key.ToString());
             if (SelectedButtonName.Equals(kv.Key.ToString())) {
                 KeyControls[kv.Key] = kc;
 
