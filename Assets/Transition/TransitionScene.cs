@@ -32,6 +32,11 @@ public class TransitionScene : MonoBehaviour {
 
     public float MoveSpeed = 5f;
 
+    public GameObject EscapeText;
+
+    bool WaitForInput = false;
+    Coroutine SlowRead;
+
     void Awake() {
         GetLines();
 
@@ -46,7 +51,55 @@ public class TransitionScene : MonoBehaviour {
         PlayerAnimator.SetBool("Left", true);
         GyuStyfeAnimator.SetBool("Run", true);
 
-        this.StartCoroutine(CheckIsDone());
+        SlowRead = this.StartCoroutine(CheckIsDone());
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            StartCoroutine(Skip());
+
+            EscapeText.SetActive(false);
+        }
+
+        if (WaitForInput) {
+            if (Input.anyKeyDown) {
+
+                StartCoroutine(FadeOutText());
+
+                PlayerAnimator.SetBool("Left", true);
+                GyuStyfeAnimator.SetBool("Run", true);
+
+                EndMove = true;
+            }
+        }
+    }
+
+    public IEnumerator Skip() {
+        StopCoroutine(SlowRead);
+
+        PickUpLine.Skip();
+        if (PickUpLine.TypeWriteEffect != null) {
+            StopCoroutine(PickUpLine.TypeWriteEffect);
+        }
+
+        RejectionLine.Skip();
+        if (RejectionLine.TypeWriteEffect != null) {
+            StopCoroutine(RejectionLine.TypeWriteEffect);
+        }
+            
+        Player.transform.position = PlayerStartPosition;
+        PlayerAnimator.SetBool("Left", false);
+
+        GyuStyfe.transform.position = GyuStyfeStartPosition;
+        GyuStyfeAnimator.SetBool("Run", false);
+        StartMove = false;
+
+        ContinueText.Play(animationToPlay, 0, 1);
+
+        yield return new WaitForEndOfFrame();
+        ContinueTextScript.isDisplayed = true;
+
+        WaitForInput = true;
     }
 
     void FixedUpdate() {
@@ -74,7 +127,7 @@ public class TransitionScene : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(PickUpLine.ShowText());
+        PickUpLine.TypeWriteEffect = StartCoroutine(PickUpLine.ShowText());
 
         while (!PickUpLine.isDone) {
             yield return new WaitForSeconds(Delay);
@@ -82,7 +135,7 @@ public class TransitionScene : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
-        StartCoroutine(RejectionLine.ShowText());
+        RejectionLine.TypeWriteEffect = StartCoroutine(RejectionLine.ShowText());
 
         while (!RejectionLine.isDone) {
             yield return new WaitForSeconds(Delay);
@@ -93,16 +146,7 @@ public class TransitionScene : MonoBehaviour {
         ContinueText.Play(animationToPlay);
         ContinueTextScript.isDisplayed = true;
 
-        while (!Input.anyKeyDown) {
-            yield return null;
-        }
-
-        StartCoroutine(FadeOutText());
-
-        PlayerAnimator.SetBool("Left", true);
-        GyuStyfeAnimator.SetBool("Run", true);
-
-        EndMove = true;
+        WaitForInput = true;
     }
 
     IEnumerator FadeOutText() {
@@ -124,7 +168,7 @@ public class TransitionScene : MonoBehaviour {
     void GetLines() {
         string[] lines = Lines.GenerateRandomLines();
 
-        PickUpLine.fullText = lines[0];
-        RejectionLine.fullText = lines[1];
+        PickUpLine.Text.text = lines[0];
+        RejectionLine.Text.text = lines[1];
     }
 }

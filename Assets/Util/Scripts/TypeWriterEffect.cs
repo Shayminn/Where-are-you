@@ -11,12 +11,19 @@ public class TypeWriterEffect : MonoBehaviour {
 
     private string currentText = "";
 
+    public Text Text;
+    public Coroutine TypeWriteEffect;
+
+    void Awake() {
+        Text = GetComponent<Text>();
+        fullText = Text.text;
+        Text.text = "";
+    }
+
     // Start is called before the first frame update
     void Start() {
-        fullText = fullText.Replace("\\n", "\n");
-
         if (onStart) {
-            StartCoroutine(ShowText());
+            TypeWriteEffect = StartCoroutine(ShowText());
         }
     }
 
@@ -26,6 +33,16 @@ public class TypeWriterEffect : MonoBehaviour {
             this.GetComponent<Text>().text = currentText;
             yield return new WaitForSeconds(delay);
         }
+
+        isDone = true;
+    }
+
+    public void Skip(bool stopCoroutine = false) {
+        if (stopCoroutine) {
+            StopCoroutine(TypeWriteEffect);
+        }
+
+        Text.text = fullText;
 
         isDone = true;
     }

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 397393783914123977}
   CanvasScaler: {fileID: 397393783914123990}
-  FirstSceneName: TutorialScene
+  FirstSceneName: MainMenu
   ChangeDelay: 0.5
 --- !u!95 &397393783914123977
 Animator:

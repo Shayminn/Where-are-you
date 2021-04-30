@@ -9,12 +9,38 @@ public class IntroFadeIn : MonoBehaviour {
 
     public TypeWriterEffect typeWriterEffect = null;
 
+    public GameObject EscapeText;
+
     public float delay = 0.1f;
     public string animationToPlay = "fade_in";
 
+    Coroutine SlowRead;
+
     // Start is called before the first frame update
     void Start() {
-        this.StartCoroutine(CheckIsDone());
+        SlowRead = this.StartCoroutine(CheckIsDone());
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            StartCoroutine(Skip());
+
+            EscapeText.SetActive(false);
+        }    
+    }
+
+    public IEnumerator Skip() {
+        StopCoroutine(SlowRead);
+
+        typeWriterEffect.Skip(true);
+
+        NoFcksGivenText.Play(animationToPlay, 0, 1);
+        TldrText.Play(animationToPlay, 0, 1);
+
+        ContinueText.Play(animationToPlay, 0, 1);
+
+        yield return new WaitForEndOfFrame();
+        ContinueTextScript.isDisplayed = true;
     }
 
     IEnumerator CheckIsDone() {
@@ -25,10 +51,10 @@ public class IntroFadeIn : MonoBehaviour {
         yield return new WaitForSeconds(1.35f);
 
         NoFcksGivenText.Play(animationToPlay);
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(2f);
 
         TldrText.Play(animationToPlay);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         ContinueText.Play(animationToPlay);
         ContinueTextScript.isDisplayed = true;

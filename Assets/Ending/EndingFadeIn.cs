@@ -16,9 +16,44 @@ public class EndingFadeIn : MonoBehaviour {
     public SpriteRenderer GyuStyfeImg;
     public int IndexToFadeIn = 5;
 
+    public GameObject EscapeText;
+
+    Coroutine SlowRead;
+
     // Start is called before the first frame update
     void Start() {
-        this.StartCoroutine(CheckIsDone());
+        SlowRead = this.StartCoroutine(CheckIsDone());
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            StartCoroutine(Skip());
+
+            EscapeText.SetActive(false);
+        }
+    }
+
+    public IEnumerator Skip() {
+        StopCoroutine(SlowRead);
+
+        foreach (TypeWriterEffect tw in EndingTexts) {
+            tw.Skip();
+            
+            if (tw.TypeWriteEffect != null) {
+                StopCoroutine(tw.TypeWriteEffect);
+            }
+        }
+
+        Color color = GyuStyfeImg.color;
+        color.a = 1;
+        GyuStyfeImg.color = color; 
+
+        TheEndText.Play(animationToPlay, 0, 1);
+
+        ContinueText.Play(animationToPlay, 0, 1);
+
+        yield return new WaitForEndOfFrame();
+        ContinueTextScript.isDisplayed = true;
     }
 
     IEnumerator CheckIsDone() {
@@ -27,7 +62,7 @@ public class EndingFadeIn : MonoBehaviour {
         Color color = GyuStyfeImg.color;
 
         while (EndingTexts.Count > 0) {
-            StartCoroutine(EndingTexts[0].ShowText());
+            EndingTexts[0].TypeWriteEffect = StartCoroutine(EndingTexts[0].ShowText());
 
             while (!EndingTexts[0].isDone) {
                 yield return new WaitForSeconds(delay);
