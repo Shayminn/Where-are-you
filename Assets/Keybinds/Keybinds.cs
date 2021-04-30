@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class Keybinds : MonoBehaviour {
     [SerializeField] Text MoveRightText = null;
     [SerializeField] Text JumpText = null;
     [SerializeField] Text DigAndPlaceText = null;
+
+    [SerializeField] Text ErrorMSG = null;
 
     public enum Controls {
         MoveLeft,
@@ -59,14 +62,29 @@ public class Keybinds : MonoBehaviour {
     }
 
     void ChangeKeybind(KeyCode kc) {
-        foreach (KeyValuePair<Controls, KeyCode> kv in KeyControls) {
-            if (SelectedButtonName.Equals(kv.Key.ToString())) {
-                KeyControls[kv.Key] = kc;
+        KeyValuePair<Controls, KeyCode> foundKV = KeyControls.FirstOrDefault(keyControl => keyControl.Value == kc);
 
-                OnChangedKeybinds();
+        if (foundKV.Value == KeyCode.None) {
+            if (kc != KeyCode.R) {
+                foreach (KeyValuePair<Controls, KeyCode> kv in KeyControls) {
+                    if (SelectedButtonName.Equals(kv.Key.ToString())) {
+                        KeyControls[kv.Key] = kc;
 
-                break;
+                        OnChangedKeybinds();
+
+                        ErrorMSG.gameObject.SetActive(false);
+                        break;
+                    }
+                }
             }
+            else {
+                ErrorMSG.gameObject.SetActive(true);
+                ErrorMSG.text = kc + " is already assigned to Reset!";
+            }
+        }
+        else {
+            ErrorMSG.gameObject.SetActive(true);
+            ErrorMSG.text = kc + " is already assigned to " + foundKV.Key + "!";
         }
     }
 

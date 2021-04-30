@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 397393783914123989}
   - component: {fileID: 397393783914123988}
   - component: {fileID: 397393783914123977}
+  - component: {fileID: 1418503446121660703}
   m_Layer: 5
   m_Name: ScreenChanger
   m_TagString: Untagged
@@ -104,7 +105,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397393783914123987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 397393783210771284}
@@ -189,9 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e081b273a9ba57d49b8ca17ad3a776bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 397393783914123977}
-  firstSceneName: MainMenu
-  changeDelay: 0.5
+  Animator: {fileID: 397393783914123977}
+  CanvasScaler: {fileID: 397393783914123990}
+  FirstSceneName: TutorialScene
+  ChangeDelay: 0.5
 --- !u!95 &397393783914123977
 Animator:
   serializedVersion: 3
@@ -211,3 +213,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1418503446121660703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397393783914123987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad325c953bda9f4ebddd550924ecbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

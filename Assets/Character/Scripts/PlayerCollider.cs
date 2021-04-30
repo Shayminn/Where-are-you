@@ -27,15 +27,21 @@ public class PlayerCollider : MonoBehaviour {
 
     bool Dead = false;
 
+    PauseUI PauseUI;
+
     readonly KeyCode Reset = KeyCode.R;
 
     void Start() {
         SoftDirtTile = Resources.Load<Tile>("DigDirt");
+
+        PauseUI = FindObjectOfType<PauseUI>();
     }
 
     void Update() {
-        if (!Dead && Input.GetKeyDown(Reset)) {
-            Die();
+        if (Input.GetKeyDown(Reset)) {
+            if (!Dead && !PauseUI.Opened) {
+                Die();
+            }
         }
     }
 
